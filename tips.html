@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0288d1">
+    <title>إرشادات طبية - قطرة حياة 💧</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --primary: #0288d1; --primary-dark: #01579b; --primary-light: #e0f7fa;
+            --secondary: #00bcd4; --accent: #ff7043; --success: #66bb6a;
+            --bg: #f0f9ff; --card-bg: rgba(255,255,255,0.85);
+            --text: #263238; --text-light: #546e7a; --border: rgba(2,136,209,0.15);
+            --shadow: 0 8px 32px rgba(2,136,209,0.12); --radius: 20px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(2,136,209,0.3); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo-icon { font-size: 2rem; animation: float 3s ease-in-out infinite; }
+        .nav-menu { display: flex; gap: 0.5rem; list-style: none; }
+        .nav-menu a { color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s; font-weight: 600; font-size: 0.9rem; }
+        .nav-menu a:hover, .nav-menu a.active { background: rgba(255,255,255,0.2); color: white; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 300px); }
+
+        .hero { text-align: center; padding: 3rem 1rem; animation: fadeInUp 0.8s ease-out; }
+        .hero h1 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow); animation: fadeInUp 0.6s ease-out; }
+        .card-title { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .card-title .icon { font-size: 1.5rem; }
+
+        .tip-card { background: white; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; border-right: 4px solid var(--primary); box-shadow: var(--shadow); transition: all 0.3s; }
+        .tip-card:hover { transform: translateX(-5px); }
+        .tip-card .category { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .tip-card h4 { color: var(--text); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .tip-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+        .tip-card ul { padding-right: 1.2rem; margin-top: 0.5rem; }
+        .tip-card li { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.4rem; line-height: 1.7; }
+
+        .references { background: #f5f5f5; border-radius: var(--radius); padding: 1.5rem; margin-top: 1.5rem; }
+        .references h4 { color: var(--primary-dark); margin-bottom: 1rem; font-size: 1.1rem; }
+        .references ol { padding-right: 1.2rem; }
+        .references li { margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-light); line-height: 1.8; }
+        .references a { color: var(--primary); text-decoration: none; }
+        .references a:hover { text-decoration: underline; }
+
+        .table-container { overflow-x: auto; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+        th { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem; text-align: right; font-weight: 700; }
+        td { padding: 1rem; border-bottom: 1px solid var(--border); color: var(--text-light); }
+        tr:hover { background: var(--primary-light); }
+        tr:last-child td { border-bottom: none; }
+
+        footer { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 3rem 0 1.5rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .footer-section h4 { font-size: 1.1rem; margin-bottom: 1rem; color: #b3e5fc; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 0.5rem; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
+        .footer-section a:hover { color: white; padding-right: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; width: 100%; flex-direction: column; margin-top: 1rem; background: rgba(0,0,0,0.1); border-radius: 12px; padding: 0.5rem; }
+            .nav-menu.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 1.8rem; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">💧</span>
+                <span>قطرة حياة</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="tips.html" class="active">إرشادات طبية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                <li><a href="privacy.html">الخصوصية</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>📚 الإرشادات الطبية والنصائح العلمية</h1>
+            <p>معلومات موثقة من مصادر علمية موثوقة حول أهمية الماء والترطيب</p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">📊</span> الاحتياجات اليومية الموصى بها (Adequate Intake)</h2>
+            <p style="color: var(--text-light); margin-bottom: 1rem;">بناءً على المعهد الوطني الأمريكي للطب (National Academy of Medicine) ومنظمة الصحة العالمية:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الفئة العمرية</th>
+                            <th>الذكور</th>
+                            <th>الإناث</th>
+                            <th>ملاحظات خاصة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>0-6 أشهر</strong></td>
+                            <td>700 مل (من الحليب)</td>
+                            <td>700 مل (من الحليب)</td>
+                            <td>لا يحتاجون ماء إضافي</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7-12 شهر</strong></td>
+                            <td>800 مل</td>
+                            <td>800 مل</td>
+                            <td>يشمل الماء من الطعام والمشروبات</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1-3 سنوات</strong></td>
+                            <td>1.3 لتر</td>
+                            <td>1.3 لتر</td>
+                            <td>حوالي 4 أكواب يومياً</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4-8 سنوات</strong></td>
+                            <td>1.7 لتر</td>
+                            <td>1.7 لتر</td>
+                            <td>حوالي 5-6 أكواب يومياً</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9-13 سنة</strong></td>
+                            <td>2.4 لتر</td>
+                            <td>2.1 لتر</td>
+                            <td>بدء الاختلاف بين الجنسين</td>
+                        </tr>
+                        <tr>
+                            <td><strong>14-18 سنة</strong></td>
+                            <td>3.3 لتر</td>
+                            <td>2.3 لتر</td>
+                            <td>فترة النمو السريع</td>
+                        </tr>
+                        <tr>
+                            <td><strong>19+ سنة</strong></td>
+                            <td>3.7 لتر</td>
+                            <td>2.7 لتر</td>
+                            <td>يشمل الماء من جميع المصادر</td>
+                        </tr>
+                        <tr style="background: var(--primary-light);">
+                            <td><strong>الحمل 🤰</strong></td>
+                            <td>-</td>
+                            <td>+300 مل</td>
+                            <td>زيادة حجم الدم والسائل الأمينيوسي</td>
+                        </tr>
+                        <tr style="background: var(--primary-light);">
+                            <td><strong>الرضاعة 🤱</strong></td>
+                            <td>-</td>
+                            <td>+700 مل</td>
+                            <td>تعويض السوائل المفقودة في الحليب</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;">
+                <strong>ملاحظة:</strong> هذه القيم تشمل الماء من جميع المصادر (المشروبات والطعام). يُشرب حوالي 80% من السوائل على شكل ماء ومشروبات، و20% من الطعام.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">🌡️</span> تأثير المناخ والبيئة</h2>
+            <div class="tip-card">
+                <span class="category">مناخ حار</span>
+                <h4>الحرارة المرتفعة (>30°C)</h4>
+                <p>تزيد من فقدان الماء عن طريق التعرق. يُنصح بزيادة الاستهلاك بـ 400-500 مل لكل درجة حرارة تزيد عن 25°C.</p>
+            </div>
+            <div class="tip-card">
+                <span class="category">رطوبة عالية</span>
+                <h4>الرطوبة (>60%)</h4>
+                <p>تقلل من تبخر العرق مما يقلل من قدرة الجسم على التبريد، مما يزيد من الحاجة للماء. يُنصح بزيادة 200-300 مل إضافية.</p>
+            </div>
+            <div class="tip-card">
+                <span class="category">مناخ جاف</span>
+                <h4>الجو الجاف</h4>
+                <p>يزيد من فقدان الماء من الجلد والرئتين حتى بدون التعرق الظاهري. يُنصح بشرب الماء بانتظام حتى بدون شعور بالعطش.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">🩺</span> الحالات الصحية الخاصة</h2>
+            <div class="tip-card">
+                <span class="category">أمراض الكلى</span>
+                <h4>الفشل الكلوي والحصوات</h4>
+                <ul>
+                    <li>مرضى الفشل الكلوي: يحتاجون لتقييد السوائل تحت إشراف طبي (عادة 500-1000 مل + إخراج البول)</li>
+                    <li>مرضى الحصوات: يُنصح بشرب 2.5-3 لتر يومياً لتقليل تركيز الأملاح</li>
+                    <li>التهاب المجاري البولية: يُنصح بزيادة الماء لتنظيف المجاري</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">السكري</span>
+                <h4>مرضى السكري</h4>
+                <ul>
+                    <li>الجفاف يزيد من تركيز السكر في الدم</li>
+                    <li>يُنصح بشرب ماء بانتظام لتجنب ارتفاع السكر</li>
+                    <li>تجنب المشروبات المحلاة واستبدالها بالماء</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">أمراض القلب</span>
+                <h4>قصور القلب</h4>
+                <ul>
+                    <li>قد يحتاج المريض لتقييد السوائل (عادة 1.5-2 لتر يومياً)</li>
+                    <li>الاستشارة الطبية ضرورية لتحديد الكمية المناسبة</li>
+                    <li>مراقبة الوزن يومياً للكشف عن احتباس السوائل</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">الرياضيون</span>
+                <h4>النشاط البدني المكثف</h4>
+                <ul>
+                    <li>قبل التمرين: 500 مل خلال 2-3 ساعات</li>
+                    <li>أثناء التمرين: 150-200 مل كل 15-20 دقيقة</li>
+                    <li>بعد التمرين: 450-675 مل لكل 0.5 كجم فقدان وزن</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">👶</span> رعاية الرضع والأطفال</h2>
+            <div class="tip-card">
+                <span class="category">حفاضات الأطفال</span>
+                <h4>متى يجب تغيير الحفاض؟</h4>
+                <ul>
+                    <li><strong>الرضع (0-3 أشهر):</strong> كل 2-3 ساعات أو فور التبول/التبرز</li>
+                    <li><strong>الأطفال (3-6 أشهر):</strong> كل 3-4 ساعات</li>
+                    <li><strong>الأطفال (6+ أشهر):</strong> كل 4-5 ساعات أو عند الاستيقاظ</li>
+                    <li><strong>أثناء النوم:</strong> لا تُوقظ الطفل إلا إذا كان الحفاض ممتلئاً جداً أو به براز</li>
+                    <li><strong>التسلخات:</strong> تغيير فوري وتنظيف جاف + كريم وقائي</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">ترطيب الرضع</span>
+                <h4>متى يحتاج الرضيع للماء؟</h4>
+                <ul>
+                    <li><strong>0-6 أشهر:</strong> لا يحتاجون ماء إضافي (الحليب يكفي)</li>
+                    <li><strong>6+ أشهر:</strong> يمكن تقديم 60-120 مل يومياً مع الطعام</li>
+                    <li><strong>الحرارة الشديدة:</strong> يمكن زيادة الماء قليلاً مع استشارة الطبيب</li>
+                    <li><strong>علامات الجفاف:</strong> البكاء بدون دموع، فم جاف، حفاضات جافة لـ 6+ ساعات</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">💡</span> نصائح علمية للترطيب الأمثل</h2>
+            <div class="tip-card">
+                <span class="category">توقيت الشرب</span>
+                <h4>متى تشرب الماء؟</h4>
+                <ul>
+                    <li>بعد الاستيقاظ: 250-500 مل لتنشيط الدورة الدموية وتنظيف الكلى</li>
+                    <li>قبل الوجبات بـ 30 دقيقة: يساعد على الهضم ويقلل الشهية</li>
+                    <li>بعد الوجبات بـ 30-60 دقيقة: تجنب الشرب أثناء الأكل مباشرة</li>
+                    <li>قبل النوم بـ 1-2 ساعة: كمية معتدلة لتجنب الاستيقاظ ليلاً</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">علامات الجفاف</span>
+                <h4>كيف تعرف أنك بحاجة للماء؟</h4>
+                <ul>
+                    <li>العطش (علامة متأخرة - جسمك يجف بالفعل)</li>
+                    <li>لون البول الداكن (يجب أن يكون أصفر فاتح)</li>
+                    <li>الصداع والدوخة الخفيفة</li>
+                    <li>الإرهاق وصعوبة التركيز</li>
+                    <li>جفاف الفم والشفتين</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <span class="category">مفاهيم خاطئة</span>
+                <h4>ما هي المعلومات المغلوطة؟</h4>
+                <ul>
+                    <li><strong>خطأ:</strong> يجب شرب 8 أكواب يومياً بالضبط. <strong>صحيح:</strong> الاحتياجات تختلف حسب العمر والنشاط والمناخ.</li>
+                    <li><strong>خطأ:</strong> الشاي والقهوة لا تحسب. <strong>صحيح:</strong> تحسب ضمن السوائل رغم التبول الزائد.</li>
+                    <li><strong>خطأ:</strong> الماء البارد يضر الهضم. <strong>صحيح:</strong> لا يوجد دليل علمي على ذلك.</li>
+                    <li><strong>خطأ:</strong> العطش يعني أنك تشرب بما يكفي. <strong>صحيح:</strong> العطش علامة متأخرة على الجفاف.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" id="references">
+            <h2 class="card-title"><span class="icon">📖</span> المراجع العلمية والمصادر</h2>
+            <div class="references">
+                <h4>المراجع العلمية الموثقة:</h4>
+                <ol>
+                    <li><strong>Institute of Medicine (US) Panel on Dietary Reference Intakes for Electrolytes and Water.</strong> "Dietary Reference Intakes for Water, Potassium, Sodium, Chloride, and Sulfate." National Academies Press, 2005. <a href="https://nap.nationalacademies.org/catalog/10925/dietary-reference-intakes-for-water-potassium-sodium-chloride-and-sulfate" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>World Health Organization (WHO).</strong> "Water, Sanitation and Hygiene Standards for Schools in Low-cost Settings." WHO Guidelines, 2009. <a href="https://www.who.int/publications/i/item/9789241547796" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>European Food Safety Authority (EFSA).</strong> "Scientific Opinion on Dietary Reference Values for Water." EFSA Journal, 2010. <a href="https://efsa.onlinelibrary.wiley.com/doi/abs/10.2903/j.efsa.2010.1459" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>Popkin, B. M., D'Anci, K. E., & Rosenberg, I. H.</strong> "Water, Hydration and Health." Nutrition Reviews, 2010, 68(8), 439-458. <a href="https://academic.oup.com/nutritionreviews/article/68/8/439/1812158" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>Sawka, M. N., et al.</strong> "American College of Sports Medicine Position Stand: Exercise and Fluid Replacement." Medicine & Science in Sports & Exercise, 2007, 39(2), 377-390. <a href="https://journals.lww.com/acsm-msse/Fulltext/2007/02000/American_College_of_Sports_Medicine_Position_Stand.1.aspx" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>Montenegro-Bethancourt, G., et al.</strong> "Contribution of Fruit and Vegetable Intake to Hydration Status in Schoolchildren." The American Journal of Clinical Nutrition, 2013. <a href="https://academic.oup.com/ajcn/article/98/4/1107/4577508" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>American Academy of Pediatrics (AAP).</strong> "Breastfeeding and the Use of Human Milk." Pediatrics, 2012, 129(3), e827-e841. <a href="https://publications.aap.org/pediatrics/article/129/3/e827/32322/Breastfeeding-and-the-Use-of-Human-Milk" target="_blank">رابط المصدر</a></li>
+
+                    <li><strong>World Health Organization (WHO).</strong> "Guidelines: Potassium Intake for Adults and Children." WHO, 2012. <a href="https://www.who.int/publications/i/item/9789241504829" target="_blank">رابط المصدر</a></li>
+
+                    <li><s
