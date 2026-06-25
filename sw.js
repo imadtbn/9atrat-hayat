@@ -1,6 +1,6 @@
 const CACHE_NAME = 'qatra-hayat-v1';
 const urlsToCache = [
-  '/',
+  '/https://imadtbn.github.io/9atrat-hayat/',
   '/index.html',
   '/about.html',
   '/privacy.html',
