@@ -2,85 +2,760 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0288d1">
-    <title>إرشادات طبية - قطرة حياة 💧</title>
+    <meta name="description" content="تطبيق قطرة حياة - تذكير ذكي بشرب الماء وتغيير حفاضات الأطفال">
+    <title>قطرة حياة 💧</title>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
+
     <style>
         :root {
-            --primary: #0288d1; --primary-dark: #01579b; --primary-light: #e0f7fa;
-            --secondary: #00bcd4; --accent: #ff7043; --success: #66bb6a;
-            --bg: #f0f9ff; --card-bg: rgba(255,255,255,0.85);
-            --text: #263238; --text-light: #546e7a; --border: rgba(2,136,209,0.15);
-            --shadow: 0 8px 32px rgba(2,136,209,0.12); --radius: 20px;
+            --primary: #0288d1;
+            --primary-dark: #01579b;
+            --primary-light: #e0f7fa;
+            --secondary: #00bcd4;
+            --accent: #ff7043;
+            --success: #66bb6a;
+            --warning: #ffa726;
+            --danger: #ef5350;
+            --bg: #f0f9ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text: #263238;
+            --text-light: #546e7a;
+            --border: rgba(2, 136, 209, 0.15);
+            --shadow: 0 8px 32px rgba(2, 136, 209, 0.12);
+            --shadow-hover: 0 12px 40px rgba(2, 136, 209, 0.2);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-        
-        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(2,136,209,0.3); }
-        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
-        .logo-icon { font-size: 2rem; animation: float 3s ease-in-out infinite; }
-        .nav-menu { display: flex; gap: 0.5rem; list-style: none; }
-        .nav-menu a { color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s; font-weight: 600; font-size: 0.9rem; }
-        .nav-menu a:hover, .nav-menu a.active { background: rgba(255,255,255,0.2); color: white; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        
-        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 300px); }
-        
-        .hero { text-align: center; padding: 3rem 1rem; animation: fadeInUp 0.8s ease-out; }
-        .hero h1 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
-        
-        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow); animation: fadeInUp 0.6s ease-out; }
-        .card-title { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-        .card-title .icon { font-size: 1.5rem; }
-        
-        .tip-card { background: white; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; border-right: 4px solid var(--primary); box-shadow: var(--shadow); transition: all 0.3s; }
-        .tip-card:hover { transform: translateX(-5px); }
-        .tip-card .category { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .tip-card h4 { color: var(--text); margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .tip-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
-        .tip-card ul { padding-right: 1.2rem; margin-top: 0.5rem; }
-        .tip-card li { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.4rem; line-height: 1.7; }
-        
-        .references { background: #f5f5f5; border-radius: var(--radius); padding: 1.5rem; margin-top: 1.5rem; }
-        .references h4 { color: var(--primary-dark); margin-bottom: 1rem; font-size: 1.1rem; }
-        .references ol { padding-right: 1.2rem; }
-        .references li { margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-light); line-height: 1.8; }
-        .references a { color: var(--primary); text-decoration: none; }
-        .references a:hover { text-decoration: underline; }
-        
-        .table-container { overflow-x: auto; margin: 1.5rem 0; }
-        table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
-        th { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem; text-align: right; font-weight: 700; }
-        td { padding: 1rem; border-bottom: 1px solid var(--border); color: var(--text-light); }
-        tr:hover { background: var(--primary-light); }
-        tr:last-child td { border-bottom: none; }
-        
-        footer { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 3rem 0 1.5rem; margin-top: 4rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .footer-section h4 { font-size: 1.1rem; margin-bottom: 1rem; color: #b3e5fc; }
-        .footer-section ul { list-style: none; }
-        .footer-section li { margin-bottom: 0.5rem; }
-        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
-        .footer-section a:hover { color: white; padding-right: 5px; }
-        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.85rem; }
-        
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(2, 136, 209, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(2, 136, 209, 0.6); }
+        }
+        @keyframes wave {
+            0% { transform: translateX(0) translateZ(0) scaleY(1); }
+            50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+            100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+        }
+        @keyframes drop {
+            0% { transform: translateY(-100px) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(300px) scale(1); opacity: 0; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
+        }
+        .bg-animation .drop {
+            position: absolute;
+            width: 20px; height: 20px;
+            background: rgba(2, 136, 209, 0.1);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            animation: drop 8s infinite linear;
+        }
+        .bg-animation .drop:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+        .bg-animation .drop:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 9s; width: 15px; height: 15px; }
+        .bg-animation .drop:nth-child(3) { left: 50%; animation-delay: 4s; animation-duration: 6s; width: 25px; height: 25px; }
+        .bg-animation .drop:nth-child(4) { left: 70%; animation-delay: 1s; animation-duration: 8s; }
+        .bg-animation .drop:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 7s; width: 18px; height: 18px; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(2, 136, 209, 0.3);
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: calc(100vh - 300px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            min-width: 150px;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .card-title .icon {
+            font-size: 1.5rem;
+        }
+
+        /* Form Elements */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-group label {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .form-group label .required {
+            color: var(--danger);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            color: var(--text);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(2, 136, 209, 0.1);
+            background: white;
+        }
+        .form-group .hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 136, 209, 0.4);
+        }
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff8a65 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #81c784 100%);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
+        .btn-block { width: 100%; }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+        }
+        .dashboard.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .water-progress {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+        }
+        .water-progress svg {
+            transform: rotate(-90deg);
+        }
+        .water-progress .progress-bg {
+            fill: none;
+            stroke: rgba(2, 136, 209, 0.1);
+            stroke-width: 12;
+        }
+        .water-progress .progress-bar {
+            fill: none;
+            stroke: url(#waterGradient);
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-dasharray: 565;
+            stroke-dashoffset: 565;
+            transition: stroke-dashoffset 1s ease-out;
+        }
+        .water-progress .progress-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .water-progress .progress-text .percent {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .water-progress .progress-text .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .water-bottle {
+            width: 120px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            border: 4px solid var(--primary);
+            border-radius: 20px 20px 40px 40px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.5);
+        }
+        .water-bottle .water-fill {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            transition: height 0.8s ease-out;
+            border-radius: 0 0 36px 36px;
+        }
+        .water-bottle .water-fill::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -50%; right: -50%;
+            height: 20px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: wave 3s infinite linear;
+        }
+        .water-bottle .bottle-label {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .action-btn {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .action-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        .action-btn .icon {
+            font-size: 2rem;
+        }
+        .action-btn .text {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .action-btn .sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* Timer Display */
+        .timer-display {
+            background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            border: 2px solid var(--border);
+        }
+        .timer-display .next-drink {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        .timer-display .countdown {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+        .timer-display .status {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .status.normal { background: #e8f5e9; color: #2e7d32; }
+        .status.warning { background: #fff3e0; color: #ef6c00; }
+        .status.danger { background: #ffebee; color: #c62828; }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .info-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        .info-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .info-card p, .info-card li {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .info-card ul {
+            padding-right: 1.2rem;
+        }
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* References Section */
+        .references {
+            background: #f5f5f5;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .references h4 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        .references ol {
+            padding-right: 1.2rem;
+        }
+        .references li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .references a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .references a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #b3e5fc;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .footer-section a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+        }
+        .modal .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: breathe 2s ease-in-out infinite;
+        }
+        .modal h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        .modal p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-dark);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu { display: none; width: 100%; flex-direction: column; margin-top: 1rem; background: rgba(0,0,0,0.1); border-radius: 12px; padding: 0.5rem; }
+            .header-content { flex-wrap: wrap; }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 1rem;
+                background: rgba(0,0,0,0.1);
+                border-radius: 12px;
+                padding: 0.5rem;
+            }
             .nav-menu.active { display: flex; }
             .mobile-menu-btn { display: block; }
             .hero h1 { font-size: 1.8rem; }
             .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .water-progress { width: 160px; height: 160px; }
+            .timer-display .countdown { font-size: 2rem; }
+        }
+
+        /* Tips Page */
+        .tip-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-right: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .tip-card:hover {
+            transform: translateX(-5px);
+        }
+        .tip-card .category {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .tip-card h4 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .tip-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Hidden */
+        .hidden { display: none !important; }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+        .section-title h2 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p {
+            color: var(--text-light);
         }
     </style>
+<base target="_blank">
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+    </div>
+
+    <!-- Header -->
     <header>
         <div class="header-content">
             <a href="index.html" class="logo">
@@ -89,8 +764,8 @@
             </a>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="tips.html" class="active">إرشادات طبية</a></li>
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="tips.html">إرشادات طبية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 <li><a href="privacy.html">الخصوصية</a></li>
@@ -98,241 +773,244 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <div class="hero">
-            <h1>📚 الإرشادات الطبية والنصائح العلمية</h1>
-            <p>معلومات موثقة من مصادر علمية موثوقة حول أهمية الماء والترطيب</p>
-        </div>
+        <!-- Setup Section (Shown initially) -->
+        <section id="setupSection" class="setup-section">
+            <div class="hero">
+                <h1>💧 قطرة حياة</h1>
+                <p>مساعدك الذكي لتذكيرك بشرب الماء وتغيير حفاضات طفلك، بناءً على بياناتك الشخصية والبيئية</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="number">🧠</div>
+                        <div class="label">ذكاء علمي</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">🔔</div>
+                        <div class="label">تذكير ذكي</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">📱</div>
+                        <div class="label">تطبيق ويب</div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card">
-            <h2 class="card-title"><span class="icon">📊</span> الاحتياجات اليومية الموصى بها (Adequate Intake)</h2>
-            <p style="color: var(--text-light); margin-bottom: 1rem;">بناءً على المعهد الوطني الأمريكي للطب (National Academy of Medicine) ومنظمة الصحة العالمية:</p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>الفئة العمرية</th>
-                            <th>الذكور</th>
-                            <th>الإناث</th>
-                            <th>ملاحظات خاصة</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>0-6 أشهر</strong></td>
-                            <td>700 مل (من الحليب)</td>
-                            <td>700 مل (من الحليب)</td>
-                            <td>لا يحتاجون ماء إضافي</td>
-                        </tr>
-                        <tr>
-                            <td><strong>7-12 شهر</strong></td>
-                            <td>800 مل</td>
-                            <td>800 مل</td>
-                            <td>يشمل الماء من الطعام والمشروبات</td>
-                        </tr>
-                        <tr>
-                            <td><strong>1-3 سنوات</strong></td>
-                            <td>1.3 لتر</td>
-                            <td>1.3 لتر</td>
-                            <td>حوالي 4 أكواب يومياً</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4-8 سنوات</strong></td>
-                            <td>1.7 لتر</td>
-                            <td>1.7 لتر</td>
-                            <td>حوالي 5-6 أكواب يومياً</td>
-                        </tr>
-                        <tr>
-                            <td><strong>9-13 سنة</strong></td>
-                            <td>2.4 لتر</td>
-                            <td>2.1 لتر</td>
-                            <td>بدء الاختلاف بين الجنسين</td>
-                        </tr>
-                        <tr>
-                            <td><strong>14-18 سنة</strong></td>
-                            <td>3.3 لتر</td>
-                            <td>2.3 لتر</td>
-                            <td>فترة النمو السريع</td>
-                        </tr>
-                        <tr>
-                            <td><strong>19+ سنة</strong></td>
-                            <td>3.7 لتر</td>
-                            <td>2.7 لتر</td>
-                            <td>يشمل الماء من جميع المصادر</td>
-                        </tr>
-                        <tr style="background: var(--primary-light);">
-                            <td><strong>الحمل 🤰</strong></td>
-                            <td>-</td>
-                            <td>+300 مل</td>
-                            <td>زيادة حجم الدم والسائل الأمينيوسي</td>
-                        </tr>
-                        <tr style="background: var(--primary-light);">
-                            <td><strong>الرضاعة 🤱</strong></td>
-                            <td>-</td>
-                            <td>+700 مل</td>
-                            <td>تعويض السوائل المفقودة في الحليب</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;">
-                <strong>ملاحظة:</strong> هذه القيم تشمل الماء من جميع المصادر (المشروبات والطعام). يُشرب حوالي 80% من السوائل على شكل ماء ومشروبات، و20% من الطعام.
-            </p>
-        </div>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">👤</span> إعداداتك الشخصية</h2>
+                <form id="userForm" onsubmit="saveUserData(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>الاسم <span class="required">*</span></label>
+                            <input type="text" id="userName" required placeholder="أدخل اسمك">
+                        </div>
+                        <div class="form-group">
+                            <label>العمر (بالسنوات) <span class="required">*</span></label>
+                            <input type="number" id="userAge" min="0" max="120" required placeholder="مثال: 30">
+                        </div>
+                        <div class="form-group">
+                            <label>الجنس <span class="required">*</span></label>
+                            <select id="userGender" required>
+                                <option value="">اختر الجنس</option>
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>الحالة الصحية</label>
+                            <select id="userHealth">
+                                <option value="normal">صحيح (بدون أمراض)</option>
+                                <option value="pregnancy">حامل 🤰</option>
+                                <option value="breastfeeding">مرضعة 🤱</option>
+                                <option value="kidney">أمراض الكلى</option>
+                                <option value="heart">أمراض القلب</option>
+                                <option value="diabetes">السكري</option>
+                                <option value="athlete">رياضي/نشاط بدني عالي</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>المنطقة/المدينة <span class="required">*</span></label>
+                            <select id="userRegion" required onchange="updateSeasonInfo()">
+                                <option value="">اختر المنطقة</option>
+                                <option value="riyadh">الرياض (السعودية)</option>
+                                <option value="jeddah">جدة (السعودية)</option>
+                                <option value="cairo">القاهرة (مصر)</option>
+                                <option value="alexandria">الإسكندرية (مصر)</option>
+                                <option value="dubai">دبي (الإمارات)</option>
+                                <option value="kuwait">الكويت</option>
+                                <option value="amman">عمان (الأردن)</option>
+                                <option value="baghdad">بغداد (العراق)</option>
+                                <option value="tunis">تونس</option>
+                                <option value="algiers">الجزائر</option>
+                                <option value="casablanca">الدار البيضاء (المغرب)</option>
+                                <option value="khartoum">الخرطوم (السودان)</option>
+                                <option value="other">منطقة أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>الوزن (كجم) - اختياري</label>
+                            <input type="number" id="userWeight" min="3" max="200" placeholder="لحساب دقيق">
+                        </div>
+                    </div>
 
-        <div class="card">
-            <h2 class="card-title"><span class="icon">🌡️</span> تأثير المناخ والبيئة</h2>
-            <div class="tip-card">
-                <span class="category">مناخ حار</span>
-                <h4>الحرارة المرتفعة (>30°C)</h4>
-                <p>تزيد من فقدان الماء عن طريق التعرق. يُنصح بزيادة الاستهلاك بـ 400-500 مل لكل درجة حرارة تزيد عن 25°C.</p>
-            </div>
-            <div class="tip-card">
-                <span class="category">رطوبة عالية</span>
-                <h4>الرطوبة (>60%)</h4>
-                <p>تقلل من تبخر العرق مما يقلل من قدرة الجسم على التبريد، مما يزيد من الحاجة للماء. يُنصح بزيادة 200-300 مل إضافية.</p>
-            </div>
-            <div class="tip-card">
-                <span class="category">مناخ جاف</span>
-                <h4>الجو الجاف</h4>
-                <p>يزيد من فقدان الماء من الجلد والرئتين حتى بدون التعرق الظاهري. يُنصح بشرب الماء بانتظام حتى بدون شعور بالعطش.</p>
-            </div>
-        </div>
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label>
+                            <input type="checkbox" id="hasBaby"> لدي رضيع/طفل يحتاج تغيير حفاضات
+                        </label>
+                    </div>
 
-        <div class="card">
-            <h2 class="card-title"><span class="icon">🩺</span> الحالات الصحية الخاصة</h2>
-            <div class="tip-card">
-                <span class="category">أمراض الكلى</span>
-                <h4>الفشل الكلوي والحصوات</h4>
-                <ul>
-                    <li>مرضى الفشل الكلوي: يحتاجون لتقييد السوائل تحت إشراف طبي (عادة 500-1000 مل + إخراج البول)</li>
-                    <li>مرضى الحصوات: يُنصح بشرب 2.5-3 لتر يومياً لتقليل تركيز الأملاح</li>
-                    <li>التهاب المجاري البولية: يُنصح بزيادة الماء لتنظيف المجاري</li>
-                </ul>
-            </div>
-            <div class="tip-card">
-                <span class="category">السكري</span>
-                <h4>مرضى السكري</h4>
-                <ul>
-                    <li>الجفاف يزيد من تركيز السكر في الدم</li>
-                    <li>يُنصح بشرب ماء بانتظام لتجنب ارتفاع السكر</li>
-                    <li>تجنب المشروبات المحلاة واستبدالها بالماء</li>
-                </ul>
-            </div>
-            <div class="tip-card">
-                <span class="category">أمراض القلب</span>
-                <h4>قصور القلب</h4>
-                <ul>
-                    <li>قد يحتاج المريض لتقييد السوائل (عادة 1.5-2 لتر يومياً)</li>
-                    <li>الاستشارة الطبية ضرورية لتحديد الكمية المناسبة</li>
-                    <li>مراقبة الوزن يومياً للكشف عن احتباس السوائل</li>
-                </ul>
-            </div>
-            <div class="tip-card">
-                <span class="category">الرياضيون</span>
-                <h4>النشاط البدني المكثف</h4>
-                <ul>
-                    <li>قبل التمرين: 500 مل خلال 2-3 ساعات</li>
-                    <li>أثناء التمرين: 150-200 مل كل 15-20 دقيقة</li>
-                    <li>بعد التمرين: 450-675 مل لكل 0.5 كجم فقدان وزن</li>
-                </ul>
-            </div>
-        </div>
+                    <div id="babySection" class="hidden" style="margin-top: 1rem;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>عمر الطفل (بالأشهر)</label>
+                                <input type="number" id="babyAge" min="0" max="36" placeholder="مثال: 6">
+                            </div>
+                            <div class="form-group">
+                                <label>نوع الحفاض المستخدم</label>
+                                <select id="diaperType">
+                                    <option value="disposable">حفاضات ورقية</option>
+                                    <option value="cloth">حفاضات قماشية</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="card">
-            <h2 class="card-title"><span class="icon">👶</span> رعاية الرضع والأطفال</h2>
-            <div class="tip-card">
-                <span class="category">حفاضات الأطفال</span>
-                <h4>متى يجب تغيير الحفاض؟</h4>
-                <ul>
-                    <li><strong>الرضع (0-3 أشهر):</strong> كل 2-3 ساعات أو فور التبول/التبرز</li>
-                    <li><strong>الأطفال (3-6 أشهر):</strong> كل 3-4 ساعات</li>
-                    <li><strong>الأطفال (6+ أشهر):</strong> كل 4-5 ساعات أو عند الاستيقاظ</li>
-                    <li><strong>أثناء النوم:</strong> لا تُوقظ الطفل إلا إذا كان الحفاض ممتلئاً جداً أو به براز</li>
-                    <li><strong>التسلخات:</strong> تغيير فوري وتنظيف جاف + كريم وقائي</li>
-                </ul>
-            </div>
-            <div class="tip-card">
-                <span class="category">ترطيب الرضع</span>
-                <h4>متى يحتاج الرضيع للماء؟</h4>
-                <ul>
-                    <li><strong>0-6 أشهر:</strong> لا يحتاجون ماء إضافي (الحليب يكفي)</li>
-                    <li><strong>6+ أشهر:</strong> يمكن تقديم 60-120 مل يومياً مع الطعام</li>
-                    <li><strong>الحرارة الشديدة:</strong> يمكن زيادة الماء قليلاً مع استشارة الطبيب</li>
-                    <li><strong>علامات الجفاف:</strong> البكاء بدون دموع، فم جاف، حفاضات جافة لـ 6+ ساعات</li>
-                </ul>
-            </div>
-        </div>
+                    <div id="seasonInfo" class="info-card" style="margin-top: 1.5rem; display: none;">
+                        <h3>🌡️ معلومات المناخ الحالية</h3>
+                        <p id="seasonText"></p>
+                    </div>
 
-        <div class="card">
-            <h2 class="card-title"><span class="icon">💡</span> نصائح علمية للترطيب الأمثل</h2>
-            <div class="tip-card">
-                <span class="category">توقيت الشرب</span>
-                <h4>متى تشرب الماء؟</h4>
-                <ul>
-                    <li>بعد الاستيقاظ: 250-500 مل لتنشيط الدورة الدموية وتنظيف الكلى</li>
-                    <li>قبل الوجبات بـ 30 دقيقة: يساعد على الهضم ويقلل الشهية</li>
-                    <li>بعد الوجبات بـ 30-60 دقيقة: تجنب الشرب أثناء الأكل مباشرة</li>
-                    <li>قبل النوم بـ 1-2 ساعة: كمية معتدلة لتجنب الاستيقاظ ليلاً</li>
-                </ul>
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <span>🚀</span> بدء التذكير الذكي
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="tip-card">
-                <span class="category">علامات الجفاف</span>
-                <h4>كيف تعرف أنك بحاجة للماء؟</h4>
-                <ul>
-                    <li>العطش (علامة متأخرة - جسمك يجف بالفعل)</li>
-                    <li>لون البول الداكن (يجب أن يكون أصفر فاتح)</li>
-                    <li>الصداع والدوخة الخفيفة</li>
-                    <li>الإرهاق وصعوبة التركيز</li>
-                    <li>جفاف الفم والشفتين</li>
-                </ul>
-            </div>
-            <div class="tip-card">
-                <span class="category">مفاهيم خاطئة</span>
-                <h4>ما هي المعلومات المغلوطة؟</h4>
-                <ul>
-                    <li><strong>خطأ:</strong> يجب شرب 8 أكواب يومياً بالضبط. <strong>صحيح:</strong> الاحتياجات تختلف حسب العمر والنشاط والمناخ.</li>
-                    <li><strong>خطأ:</strong> الشاي والقهوة لا تحسب. <strong>صحيح:</strong> تحسب ضمن السوائل رغم التبول الزائد.</li>
-                    <li><strong>خطأ:</strong> الماء البارد يضر الهضم. <strong>صحيح:</strong> لا يوجد دليل علمي على ذلك.</li>
-                    <li><strong>خطأ:</strong> العطش يعني أنك تشرب بما يكفي. <strong>صحيح:</strong> العطش علامة متأخرة على الجفاف.</li>
-                </ul>
-            </div>
-        </div>
+        </section>
 
-        <div class="card" id="references">
-            <h2 class="card-title"><span class="icon">📖</span> المراجع العلمية والمصادر</h2>
-            <div class="references">
-                <h4>المراجع العلمية الموثقة:</h4>
-                <ol>
-                    <li><strong>Institute of Medicine (US) Panel on Dietary Reference Intakes for Electrolytes and Water.</strong> "Dietary Reference Intakes for Water, Potassium, Sodium, Chloride, and Sulfate." National Academies Press, 2005. <a href="https://nap.nationalacademies.org/catalog/10925/dietary-reference-intakes-for-water-potassium-sodium-chloride-and-sulfate" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>World Health Organization (WHO).</strong> "Water, Sanitation and Hygiene Standards for Schools in Low-cost Settings." WHO Guidelines, 2009. <a href="https://www.who.int/publications/i/item/9789241547796" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>European Food Safety Authority (EFSA).</strong> "Scientific Opinion on Dietary Reference Values for Water." EFSA Journal, 2010. <a href="https://efsa.onlinelibrary.wiley.com/doi/abs/10.2903/j.efsa.2010.1459" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>Popkin, B. M., D'Anci, K. E., & Rosenberg, I. H.</strong> "Water, Hydration and Health." Nutrition Reviews, 2010, 68(8), 439-458. <a href="https://academic.oup.com/nutritionreviews/article/68/8/439/1812158" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>Sawka, M. N., et al.</strong> "American College of Sports Medicine Position Stand: Exercise and Fluid Replacement." Medicine & Science in Sports & Exercise, 2007, 39(2), 377-390. <a href="https://journals.lww.com/acsm-msse/Fulltext/2007/02000/American_College_of_Sports_Medicine_Position_Stand.1.aspx" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>Montenegro-Bethancourt, G., et al.</strong> "Contribution of Fruit and Vegetable Intake to Hydration Status in Schoolchildren." The American Journal of Clinical Nutrition, 2013. <a href="https://academic.oup.com/ajcn/article/98/4/1107/4577508" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>American Academy of Pediatrics (AAP).</strong> "Breastfeeding and the Use of Human Milk." Pediatrics, 2012, 129(3), e827-e841. <a href="https://publications.aap.org/pediatrics/article/129/3/e827/32322/Breastfeeding-and-the-Use-of-Human-Milk" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>World Health Organization (WHO).</strong> "Guidelines: Potassium Intake for Adults and Children." WHO, 2012. <a href="https://www.who.int/publications/i/item/9789241504829" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>Armstrong, L. E.</strong> "Hydration Assessment Techniques." Nutritional Reviews, 2005, 63(6), S40-S54. <a href="https://academic.oup.com/nutritionreviews/article/63/suppl_1/S40/1812156" target="_blank">رابط المصدر</a></li>
-                    
-                    <li><strong>Manz, F., & Wentz, A.</strong> "The Importance of Good Hydration for the Prevention of Chronic Diseases." Nutrition Reviews, 2005, 63(6), S2-S5. <a href="https://academic.oup.com/nutritionreviews/article/63/suppl_1/S2/1812154" target="_blank">رابط المصدر</a></li>
-                </ol>
+        <!-- Dashboard Section (Hidden initially) -->
+        <section id="dashboardSection" class="dashboard">
+            <div class="hero">
+                <h1>مرحباً <span id="displayName"></span> 👋</h1>
+                <p id="dailyGoalText">هدفك اليومي: -- مل</p>
             </div>
-            <div style="margin-top: 1.5rem; padding: 1rem; background: #fff3e0; border-radius: 12px; border-right: 4px solid var(--warning);">
-                <p style="color: var(--text); font-size: 0.9rem; line-height: 1.8;">
-                    <strong>⚠️ إخلاء مسؤولية:</strong> المعلومات الواردة في هذا الموقع هي لأغراض إرشادية وتثقيفية فقط، ولا تغني عن استشارة الطبيب المختص. في حال وجود أي حالة صحية مزمنة، يُنصح دائماً بالرجوع إلى الطبيب لتحديد الاحتياجات الفردية.
-                </p>
+
+            <!-- Water Progress -->
+            <div class="card">
+                <h2 class="card-title"><span class="icon">💧</span> تقدم شرب الماء</h2>
+                <div class="water-progress">
+                    <svg width="200" height="200" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0288d1"/>
+                                <stop offset="100%" style="stop-color:#00bcd4"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="progress-bg" cx="100" cy="100" r="90"/>
+                        <circle class="progress-bar" id="progressCircle" cx="100" cy="100" r="90"/>
+                    </svg>
+                    <div class="progress-text">
+                        <div class="percent" id="progressPercent">0%</div>
+                        <div class="label" id="progressLabel">0 / -- مل</div>
+                    </div>
+                </div>
+
+                <div class="timer-display">
+                    <div class="next-drink">⏰ الوقت المتبقي للشرب القادم</div>
+                    <div class="countdown" id="countdownTimer">--:--:--</div>
+                    <div class="status normal" id="timerStatus">✅ في الموعد</div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="addWater(150)">
+                        <span class="icon">🥛</span>
+                        <span class="text">كوب صغير</span>
+                        <span class="sub">150 مل</span>
+                    </button>
+                    <button class="action-btn" onclick="addWater(250)">
+                        <span class="icon">🥤</span>
+                        <span class="text">كوب متوسط</span>
+                        <span class="sub">250 مل</span>
+                    </button>
+                    <button class="action-btn" onclick="addWater(500)">
+                        <span class="icon">🍶</span>
+                        <span class="text">قنينة ماء</span>
+                        <span class="sub">500 مل</span>
+                    </button>
+                    <button class="action-btn" onclick="addWater(1000)">
+                        <span class="icon">💧</span>
+                        <span class="text">لتر كامل</span>
+                        <span class="sub">1000 مل</span>
+                    </button>
+                    <button class="action-btn" onclick="resetWater()">
+                        <span class="icon">🔄</span>
+                        <span class="text">إعادة تعيين</span>
+                        <span class="sub">اليوم الجديد</span>
+                    </button>
+                </div>
             </div>
-        </div>
+
+            <!-- Baby Diaper Section -->
+            <div class="card" id="babyDashboard" style="display: none;">
+                <h2 class="card-title"><span class="icon">👶</span> تذكير تغيير الحفاض</h2>
+                <div class="timer-display">
+                    <div class="next-drink">⏰ الوقت المتبقي لتغيير الحفاض</div>
+                    <div class="countdown" id="diaperCountdown">--:--:--</div>
+                    <div class="status warning" id="diaperStatus">👶 انتبه لطفلك</div>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="btn btn-accent" onclick="resetDiaperTimer()">
+                        <span>✅</span> تم تغيير الحفاض
+                    </button>
+                </div>
+                <div class="info-grid" style="margin-top: 1.5rem;">
+                    <div class="info-card">
+                        <h3>🩺 نصائح صحية</h3>
+                        <ul>
+                            <li>تغيير الحفاض فوراً عند التبول أو التبرز</li>
+                            <li>تنظيف المنطقة بماء فاتر وصابون خفيف</li>
+                            <li>ترك المنطقة تجف قبل لبس الحفاض الجديد</li>
+                            <li>استخدام كريم وقائي لمنع التسلخات</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>📊 إحصائيات اليوم</h3>
+                        <p>عدد التغييرات: <strong id="diaperCount">0</strong></p>
+                        <p>آخر تغيير: <strong id="lastDiaperChange">--</strong></p>
+                        <p>نوع الحفاض: <strong id="diaperTypeDisplay">--</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Info -->
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📋</span> ملخص اليوم</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 الهدف اليومي</h3>
+                        <p id="goalInfo">--</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌡️ الظروف المناخية</h3>
+                        <p id="climateInfo">--</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💡 نصيحة اليوم</h3>
+                        <p id="dailyTip">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-outline" onclick="editSettings()">
+                    <span>⚙️</span> تعديل الإعدادات
+                </button>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -364,18 +1042,517 @@
         </div>
     </footer>
 
+    <!-- Reminder Modal -->
+    <div class="modal-overlay" id="reminderModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-icon" id="modalIcon">💧</div>
+            <h2 id="modalTitle">حان وقت شرب الماء!</h2>
+            <p id="modalBody">جسمك يحتاج إلى الترطيب الآن. تذكر أن الماء أساس الحياة.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-success" onclick="confirmDrink()">
+                    <span>✅</span> شربت الماء
+                </button>
+                <button class="btn btn-outline" onclick="snoozeReminder()">
+                    <span>⏰</span> تأجيل 10 دقائق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">✅ تم الحفظ بنجاح!</div>
+
     <script>
-        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+        // ===================== DATA & CONFIG =====================
+        const SEASON_DATA = {
+            'riyadh': { temp: 35, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة، تحتاج لزيادة الماء' },
+            'jeddah': { temp: 33, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة عالية مع حرارة' },
+            'cairo': { temp: 32, season: 'صيف', humidity: 'متوسطة', note: 'جو حار جاف' },
+            'alexandria': { temp: 29, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة بحرية' },
+            'dubai': { temp: 38, season: 'صيف', humidity: 'مرتفعة', note: 'حرارة مرتفعة جداً' },
+            'kuwait': { temp: 36, season: 'صيف', humidity: 'منخفضة', note: 'حرارة جافة شديدة' },
+            'amman': { temp: 28, season: 'صيف', humidity: 'منخفضة', note: 'جو معتدل نسبياً' },
+            'baghdad': { temp: 40, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة جداً' },
+            'tunis': { temp: 30, season: 'صيف', humidity: 'متوسطة', note: 'جو حار معتدل' },
+            'algiers': { temp: 28, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة معتدلة' },
+            'casablanca': { temp: 25, season: 'صيف', humidity: 'مرتفعة', note: 'جو معتدل رطب' },
+            'khartoum': { temp: 38, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة جداً' },
+            'other': { temp: 30, season: 'غير محدد', humidity: 'متوسطة', note: 'يرجى شرب الماء بانتظام' }
+        };
+
+        const TIPS = [
+            "شرب الماء قبل الوجبات بـ 30 دقيقة يساعد على الهضم",
+            "الماء البارد يحرق سعرات حرارية أكثر من الماء الدافئ",
+            "تجنب شرب كميات كبيرة مرة واحدة، بل قسّمها على اليوم",
+            "الشعور بالعطش يعني أن جسمك بدأ يجف بالفعل",
+            "الماء يساعد على ترطيب الجلد ومحاربة علامات التقدم في السن",
+            "شرب الماء يساعد على تنظيف الكلى ومنع تكون الحصوات"
+        ];
+
+        let userData = null;
+        let waterConsumed = 0;
+        let dailyGoal = 2500;
+        let nextDrinkTime = null;
+        let nextDiaperTime = null;
+        let diaperCount = 0;
+        let timerInterval = null;
+        let diaperInterval = null;
+
+        // ===================== INITIALIZATION =====================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Register Service Worker for PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW error:', err));
+            }
+
+            // Request notification permission
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+
+            // Load saved data
+            loadUserData();
+
+            // Baby section toggle
+            document.getElementById('hasBaby').addEventListener('change', function() {
+                document.getElementById('babySection').classList.toggle('hidden', !this.checked);
+            });
+        });
+
+        // ===================== USER DATA =====================
+        function updateSeasonInfo() {
+            const region = document.getElementById('userRegion').value;
+            const infoDiv = document.getElementById('seasonInfo');
+            const textDiv = document.getElementById('seasonText');
+
+            if (region && SEASON_DATA[region]) {
+                const data = SEASON_DATA[region];
+                textDiv.innerHTML = `
+                    <strong>الفصل:</strong> ${data.season} | 
+                    <strong>درجة الحرارة المتوقعة:</strong> ${data.temp}°C | 
+                    <strong>الرطوبة:</strong> ${data.humidity}<br>
+                    <strong>ملاحظة:</strong> ${data.note}
+                `;
+                infoDiv.style.display = 'block';
+            } else {
+                infoDiv.style.display = 'none';
+            }
+        }
+
+        function saveUserData(e) {
+            e.preventDefault();
+
+            const region = document.getElementById('userRegion').value;
+            const climate = SEASON_DATA[region] || SEASON_DATA['other'];
+
+            userData = {
+                name: document.getElementById('userName').value,
+                age: parseInt(document.getElementById('userAge').value),
+                gender: document.getElementById('userGender').value,
+                health: document.getElementById('userHealth').value,
+                region: region,
+                weight: parseInt(document.getElementById('userWeight').value) || null,
+                hasBaby: document.getElementById('hasBaby').checked,
+                babyAge: parseInt(document.getElementById('babyAge').value) || 0,
+                diaperType: document.getElementById('diaperType').value,
+                climate: climate,
+                setupDate: new Date().toISOString()
+            };
+
+            // Calculate daily goal based on scientific data
+            dailyGoal = calculateWaterGoal(userData);
+
+            localStorage.setItem('qatraUserData', JSON.stringify(userData));
+            localStorage.setItem('qatraDailyGoal', dailyGoal);
+            localStorage.setItem('qatraWaterConsumed', '0');
+            localStorage.setItem('qatraSetupDate', new Date().toDateString());
+
+            waterConsumed = 0;
+            diaperCount = 0;
+
+            showToast('✅ تم حفظ البيانات بنجاح!');
+            showDashboard();
+        }
+
+        function calculateWaterGoal(data) {
+            let base = 2000; // ml base for adult male
+
+            // Age adjustments
+            if (data.age < 1) base = 800;
+            else if (data.age < 3) base = 1300;
+            else if (data.age < 8) base = 1700;
+            else if (data.age < 13) base = 2100;
+            else if (data.age < 18) base = data.gender === 'male' ? 2600 : 2200;
+            else if (data.age >= 65) base = 1800;
+
+            // Gender adjustment for adults
+            if (data.age >= 18) {
+                base = data.gender === 'female' ? 2200 : 2500;
+            }
+
+            // Health conditions
+            switch(data.health) {
+                case 'pregnancy': base += 300; break;
+                case 'breastfeeding': base += 700; break;
+                case 'athlete': base += 500; break;
+                case 'kidney': base = Math.min(base, 1500); break; // Kidney patients need less
+                case 'heart': base = Math.min(base, 1500); break;
+                case 'diabetes': base += 200; break;
+            }
+
+            // Climate adjustment
+            if (data.climate) {
+                if (data.climate.temp > 35) base += 500;
+                else if (data.climate.temp > 30) base += 300;
+                else if (data.climate.temp > 25) base += 150;
+
+                if (data.climate.humidity === 'مرتفعة') base += 200;
+            }
+
+            // Weight adjustment (if provided)
+            if (data.weight) {
+                base = Math.max(base, data.weight * 35); // 35ml per kg minimum
+            }
+
+            return Math.round(base);
+        }
+
+        function loadUserData() {
+            const saved = localStorage.getItem('qatraUserData');
+            const savedGoal = localStorage.getItem('qatraDailyGoal');
+            const savedWater = localStorage.getItem('qatraWaterConsumed');
+            const setupDate = localStorage.getItem('qatraSetupDate');
+
+            // Reset if new day
+            if (setupDate !== new Date().toDateString()) {
+                localStorage.setItem('qatraWaterConsumed', '0');
+                localStorage.setItem('qatraDiaperCount', '0');
+                waterConsumed = 0;
+                diaperCount = 0;
+            } else {
+                waterConsumed = parseInt(savedWater) || 0;
+                diaperCount = parseInt(localStorage.getItem('qatraDiaperCount')) || 0;
+            }
+
+            if (saved && savedGoal) {
+                userData = JSON.parse(saved);
+                dailyGoal = parseInt(savedGoal);
+                showDashboard();
+            }
+        }
+
+        // ===================== DASHBOARD =====================
+        function showDashboard() {
+            document.getElementById('setupSection').style.display = 'none';
+            document.getElementById('dashboardSection').classList.add('active');
+
+            document.getElementById('displayName').textContent = userData.name;
+            document.getElementById('dailyGoalText').textContent = `هدفك اليومي: ${dailyGoal} مل`;
+
+            updateProgress();
+            startTimer();
+
+            // Baby section
+            if (userData.hasBaby) {
+                document.getElementById('babyDashboard').style.display = 'block';
+                document.getElementById('diaperTypeDisplay').textContent = 
+                    userData.diaperType === 'disposable' ? 'حفاضات ورقية' : 'حفاضات قماشية';
+                startDiaperTimer();
+            }
+
+            // Update info
+            document.getElementById('goalInfo').textContent = 
+                `هدفك: ${dailyGoal} مل يومياً (${Math.round(dailyGoal/250)} أكواب تقريباً)`;
+
+            if (userData.climate) {
+                document.getElementById('climateInfo').textContent = 
+                    `منطقة ${userData.region} - ${userData.climate.season} - ${userData.climate.temp}°C - ${userData.climate.humidity} رطوبة`;
+            }
+
+            document.getElementById('dailyTip').textContent = 
+                TIPS[Math.floor(Math.random() * TIPS.length)];
+
+            // Schedule notifications
+            scheduleNotifications();
+        }
+
+        function updateProgress() {
+            const percent = Math.min((waterConsumed / dailyGoal) * 100, 100);
+            const circumference = 2 * Math.PI * 90;
+            const offset = circumference - (percent / 100) * circumference;
+
+            document.getElementById('progressCircle').style.strokeDashoffset = offset;
+            document.getElementById('progressPercent').textContent = Math.round(percent) + '%';
+            document.getElementById('progressLabel').textContent = `${waterConsumed} / ${dailyGoal} مل`;
+
+            localStorage.setItem('qatraWaterConsumed', waterConsumed.toString());
+        }
+
+        function addWater(amount) {
+            waterConsumed += amount;
+            updateProgress();
+            showToast(`✅ تم إضافة ${amount} مل`);
+
+            // Reset timer
+            const interval = calculateDrinkInterval();
+            nextDrinkTime = new Date(Date.now() + interval);
+
+            // Play sound
+            playSound('water');
+
+            // Check if goal reached
+            if (waterConsumed >= dailyGoal) {
+                setTimeout(() => {
+                    showModal('🎉', 'أحسنت!', 'لقد حققت هدفك اليومي! جسمك ممتن لك 💧');
+                }, 500);
+            }
+        }
+
+        function resetWater() {
+            if (confirm('هل تريد إعادة تعيين عداد اليوم؟')) {
+                waterConsumed = 0;
+                updateProgress();
+                showToast('🔄 تم إعادة التعيين');
+            }
+        }
+
+        function calculateDrinkInterval() {
+            // Based on daily goal, divide into intervals
+            // More frequent in hot weather
+            let intervals = 8; // default 8 times a day
+
+            if (userData.climate && userData.climate.temp > 35) intervals = 10;
+            else if (userData.climate && userData.climate.temp > 30) intervals = 9;
+
+            if (userData.health === 'athlete') intervals += 2;
+            if (userData.health === 'pregnancy') intervals += 1;
+            if (userData.health === 'breastfeeding') intervals += 2;
+
+            const msPerInterval = (24 * 60 * 60 * 1000) / intervals;
+            return Math.max(msPerInterval, 60 * 60 * 1000); // Minimum 1 hour
+        }
+
+        // ===================== TIMERS =====================
+        function startTimer() {
+            const interval = calculateDrinkInterval();
+            nextDrinkTime = new Date(Date.now() + interval);
+
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            if (!nextDrinkTime) return;
+
+            const now = new Date();
+            const diff = nextDrinkTime - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdownTimer').textContent = '00:00:00';
+                document.getElementById('timerStatus').textContent = '⏰ حان الوقت!';
+                document.getElementById('timerStatus').className = 'status danger';
+
+                // Show reminder
+                showReminder();
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdownTimer').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            // Update status color
+            const status = document.getElementById('timerStatus');
+            if (diff < 10 * 60 * 1000) {
+                status.textContent = '⚠️ اقترب الوقت!';
+                status.className = 'status warning';
+            } else {
+                status.textContent = '✅ في الموعد';
+                status.className = 'status normal';
+            }
+        }
+
+        function startDiaperTimer() {
+            // Newborns: every 2-3 hours
+            // Older babies: every 3-4 hours
+            const interval = userData.babyAge < 3 ? 2 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000;
+            nextDiaperTime = new Date(Date.now() + interval);
+
+            if (diaperInterval) clearInterval(diaperInterval);
+            diaperInterval = setInterval(updateDiaperTimer, 1000);
+        }
+
+        function updateDiaperTimer() {
+            if (!nextDiaperTime) return;
+
+            const now = new Date();
+            const diff = nextDiaperTime - now;
+
+            if (diff <= 0) {
+                document.getElementById('diaperCountdown').textContent = '00:00:00';
+                document.getElementById('diaperStatus').textContent = '⚠️ حان وقت التغيير!';
+                document.getElementById('diaperStatus').className = 'status danger';
+
+                // Show diaper reminder
+                showModal('👶', 'حان وقت تغيير الحفاض!', 'طفلك يحتاج إلى حفاض نظيف الآن');
+                playSound('baby');
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('diaperCountdown').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function resetDiaperTimer() {
+            diaperCount++;
+            localStorage.setItem('qatraDiaperCount', diaperCount.toString());
+            document.getElementById('diaperCount').textContent = diaperCount;
+            document.getElementById('lastDiaperChange').textContent = new Date().toLocaleTimeString('ar-SA');
+            startDiaperTimer();
+            showToast('✅ تم تسجيل تغيير الحفاض');
+        }
+
+        // ===================== NOTIFICATIONS =====================
+        function scheduleNotifications() {
+            if (!('Notification' in window) || Notification.permission !== 'granted') return;
+
+            // We use the service worker for background notifications
+            // For foreground, we show our custom modal
+        }
+
+        function showReminder() {
+            showModal('💧', 'حان وقت شرب الماء!', 'جسمك يحتاج إلى الترطيب الآن. تذكر أن الماء أساس الحياة.');
+            playSound('water');
+
+            // Also send system notification if permitted
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('💧 قطرة حياة', {
+                    body: `حان وقت شرب الماء يا ${userData.name}!`,
+                    icon: '💧',
+                    vibrate: [200, 100, 200]
+                });
+            }
+        }
+
+        function confirmDrink() {
+            closeModal();
+            addWater(250);
+        }
+
+        function snoozeReminder() {
+            closeModal();
+            nextDrinkTime = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+            showToast('⏰ تم تأجيل التذكير 10 دقائق');
+        }
+
+        // ===================== MODAL & TOAST =====================
+        function showModal(icon, title, body) {
+            document.getElementById('modalIcon').textContent = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').textContent = body;
+            document.getElementById('reminderModal').classList.add('active');
+
+            // Play sound
+            playSound('notification');
+        }
+
+        function closeModal() {
+            document.getElementById('reminderModal').classList.remove('active');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ===================== SOUND =====================
+        function playSound(type) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'water') {
+                    osc.frequency.value = 800;
+                    gain.gain.value = 0.1;
+                    osc.start();
+                    osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.3);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'baby') {
+                    osc.frequency.value = 600;
+                    gain.gain.value = 0.1;
+                    osc.start();
+                    osc.frequency.setValueAtTime(600, ctx.currentTime);
+                    osc.frequency.setValueAtTime(800, ctx.currentTime + 0.2);
+                    osc.frequency.setValueAtTime(600, ctx.currentTime + 0.4);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                    osc.stop(ctx.currentTime + 0.5);
+                } else {
+                    osc.frequency.value = 523;
+                    gain.gain.value = 0.1;
+                    osc.start();
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                    osc.stop(ctx.currentTime + 0.2);
+                }
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        // ===================== PWA =====================
         function installPWA() {
             if ('beforeinstallprompt' in window) {
                 window.deferredPrompt.prompt();
                 window.deferredPrompt.userChoice.then(choice => {
-                    if (choice.outcome === 'accepted') alert('✅ تم تثبيت التطبيق!');
+                    if (choice.outcome === 'accepted') {
+                        showToast('✅ تم تثبيت التطبيق!');
+                    }
                 });
-            } else { alert('📱 أضف الصفحة إلى الشاشة الرئيسية'); }
+            } else {
+                showToast('📱 أضف الصفحة إلى الشاشة الرئيسية');
+            }
         }
+
         let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); window.deferredPrompt = e; });
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            window.deferredPrompt = e;
+        });
+
+        // ===================== UTILITIES =====================
+        function editSettings() {
+            if (confirm('هل تريد تعديل إعداداتك؟')) {
+                localStorage.removeItem('qatraUserData');
+                location.reload();
+            }
+        }
+
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('reminderModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('reminderModal')) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
