@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0288d1">
+    <title>سياسة الخصوصية - قطرة حياة 💧</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
+    <style>
+        :root { --primary: #0288d1; --primary-dark: #01579b; --primary-light: #e0f7fa; --secondary: #00bcd4; --accent: #ff7043; --bg: #f0f9ff; --card-bg: rgba(255,255,255,0.85); --text: #263238; --text-light: #546e7a; --border: rgba(2,136,209,0.15); --shadow: 0 8px 32px rgba(2,136,209,0.12); --radius: 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(2,136,209,0.3); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo-icon { font-size: 2rem; animation: float 3s ease-in-out infinite; }
+        .nav-menu { display: flex; gap: 0.5rem; list-style: none; }
+        .nav-menu a { color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s; font-weight: 600; font-size: 0.9rem; }
+        .nav-menu a:hover, .nav-menu a.active { background: rgba(255,255,255,0.2); color: white; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 300px); }
+        .hero { text-align: center; padding: 3rem 1rem; animation: fadeInUp 0.8s ease-out; }
+        .hero h1 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow); animation: fadeInUp 0.6s ease-out; }
+        .card-title { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .card-title .icon { font-size: 1.5rem; }
+        .policy-item { background: white; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; border-right: 4px solid var(--primary); box-shadow: var(--shadow); }
+        .policy-item h3 { color: var(--primary-dark); margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .policy-item p { color: var(--text-light); font-size: 0.95rem; line-height: 1.9; }
+        .policy-item ul { padding-right: 1.2rem; margin-top: 0.5rem; }
+        .policy-item li { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.7; }
+        .highlight { background: var(--primary-light); padding: 1rem; border-radius: 12px; margin: 1rem 0; border-right: 3px solid var(--primary); }
+        .highlight p { color: var(--text); font-weight: 600; }
+        footer { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 3rem 0 1.5rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .footer-section h4 { font-size: 1.1rem; margin-bottom: 1rem; color: #b3e5fc; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 0.5rem; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
+        .footer-section a:hover { color: white; padding-right: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+        @media (max-width: 768px) { .nav-menu { display: none; width: 100%; flex-direction: column; margin-top: 1rem; background: rgba(0,0,0,0.1); border-radius: 12px; padding: 0.5rem; } .nav-menu.active { display: flex; } .mobile-menu-btn { display: block; } .hero h1 { font-size: 1.8rem; } .footer-content { grid-template-columns: 1fr; text-align: center; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">💧</span>
+                <span>قطرة حياة</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="tips.html">إرشادات طبية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                <li><a href="privacy.html" class="active">الخصوصية</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>🔒 سياسة الخصوصية</h1>
+            <p>نحن نحترم خصوصيتك تماماً. تعرف على كيفية تعاملنا مع بياناتك</p>
+        </div>
+
+        <div class="highlight">
+            <p>🔐 ملخص سريع: جميع بياناتك تُحفظ في متصفحك فقط ولا تُرسل إلى أي خادم خارجي. أنت المتحكم الوحيد في معلوماتك.</p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">📦</span> البيانات التي نجمعها</h2>
+            <div class="policy-item">
+                <h3>📝 البيانات الشخصية</h3>
+                <p>نطلب منك فقط المعلومات الضرورية لتخصيص التذكيرات:</p>
+                <ul>
+                    <li>الاسم (للتخصيص فقط)</li>
+                    <li>العمر والجنس (لحساب الاحتياجات اليومية)</li>
+                    <li>الحالة الصحية (لتعديل التوصيات)</li>
+                    <li>المنطقة/المدينة (لمراعاة المناخ)</li>
+                    <li>الوزن (اختياري - لحسابات أكثر دقة)</li>
+                </ul>
+            </div>
+            <div class="policy-item">
+                <h3>👶 بيانات الطفل (اختيارية)</h3>
+                <p>إذا اخترت تفعيل تذكيرات الحفاضات:</p>
+                <ul>
+                    <li>عمر الطفل (لتحديد فترات التغيير)</li>
+                    <li>نوع الحفاض المستخدم</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">💾</span> كيفية حفظ البيانات</h2>
+            <div class="policy-item">
+                <h3>🖥️ التخزين المحلي فقط</h3>
+                <p>جميع بياناتك تُحفظ في <strong>LocalStorage</strong> الخاص بمتصفحك فقط. هذا يعني:</p>
+                <ul>
+                    <li>لا يوجد خادم خارجي يستقبل بياناتك</li>
+                    <li>لا يوجد قاعدة بيانات مركزية</li>
+                    <li>لا يتم مشاركة معلوماتك مع أي طرف ثالث</li>
+                    <li>لا يتم استخدام البيانات لأغراض إعلانية</li>
+                </ul>
+            </div>
+            <div class="policy-item">
+                <h3>🗑️ حذف البيانات</h3>
+                <p>يمكنك حذف جميع بياناتك في أي وقت:</p>
+                <ul>
+                    <li>بالضغط على "تعديل الإعدادات" في الصفحة الرئيسية</li>
+                    <li>أو من خلال إعدادات المتصفح ← مسح بيانات الموقع</li>
+                    <li>جميع البيانات تُحذف تلقائياً عند مسح ذاكرة التخزين المؤقت</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">🔔</span> الإشعارات والتذكيرات</h2>
+            <div class="policy-item">
+                <h3>📱 إشعارات الجهاز</h3>
+                <p>نستخدم <strong>Web Notifications API</strong> و <strong>Service Workers</strong> لإرسال التذكيرات:</p>
+                <ul>
+                    <li>الإشعارات تُرسل من جهازك إلى جهازك (لا تمر عبر الإنترنت)</li>
+                    <li>يمكنك إلغاء الإشعارات في أي وقت من إعدادات المتصفح</li>
+                    <li>لا نرسل إشعارات إلا بناءً على التوقيتات التي حددتها</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">🍪</span> ملفات تعريف الارتباط (Cookies)</h2>
+            <div class="policy-item">
+                <h3>لا نستخدم ملفات تعريف الارتباط التقليدية</h3>
+                <p>نستخدم <strong>LocalStorage</strong> فقط لتخزين:</p>
+                <ul>
+                    <li>إعدادات المستخدم</li>
+                    <li>سجل شرب الماء اليومي</li>
+                    <li>عدد تغييرات الحفاض</li>
+                </ul>
+                <p style="margin-top: 0.5rem;">هذه البيانات لا تُرسل إلى أي مكان ولا تُستخدم للتتبع.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">⚠️</span> إخلاء المسؤولية</h2>
+            <div class="policy-item">
+                <h3>الاستخدام الطبي</h3>
+                <p>التطبيق لا يقدم استشارات طبية. في حالات الطوارئ أو وجود أعراض صحية خطيرة:</p>
+                <ul>
+                    <li>اتصل بالطبيب فوراً</li>
+                    <li>لا تعتمد على التطبيق كبديل للرعاية الطبية</li>
+                    <li>المراجع العلمية هي للتثقيف فقط</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><span class="icon">📅</span> تحديثات السياسة</h2>
+            <p style="color: var(--text-light); line-height: 1.9;">
+                آخر تحديث: 25 يونيو 2024. نحتفظ بالحق في تحديث هذه السياسة. أي تغييرات جوهرية سيتم الإعلان عنها في التطبيق. 
+                باستمرارك في استخدام التطبيق، فإنك توافق على الشروط الحالية.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌐 روابط سريعة</h4>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="tips.html">الإرشادات الطبية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 معلومات</h4>
+                <ul>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="tips.html#references">المراجع العلمية</a></li>
+                    <li><a href="#" onclick="installPWA()">📲 تثبيت التطبيق</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💧 قطرة حياة</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8;">
+                    نسعى لتحسين صحتك وصحة عائلتك من خلال تذكيرات ذكية مبنية على أسس علمية.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 قطرة حياة - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+        function installPWA() {
+            if ('beforeinstallprompt' in window) {
+                window.deferredPrompt.prompt();
+                window.deferredPrompt.userChoice.then(choice => {
+                    if (choice.outcome === 'accepted') alert('✅ تم تثبيت التطبيق!');
+                });
+            } else { alert('📱 أضف الصفحة إلى الشاشة الرئيسية'); }
+        }
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); window.deferredPrompt = e; });
+    </script>
+</body>
+  </html>
