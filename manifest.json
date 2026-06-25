@@ -1,0 +1,22 @@
+{
+  "name": "قطرة حياة - تذكير شرب الماء",
+  "short_name": "قطرة حياة",
+  "description": "تطبيق ذكي لتذكيرك بشرب الماء وتغيير حفاضات الأطفال",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e0f7fa",
+  "theme_color": "#0288d1",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ccircle cx='256' cy='256' r='240' fill='%230288d1'/%3E%3Ctext x='256' y='300' font-size='200' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
