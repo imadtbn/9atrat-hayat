@@ -2,7 +2,7 @@
   "name": "قطرة حياة - تذكير شرب الماء",
   "short_name": "قطرة حياة",
   "description": "تطبيق ذكي لتذكيرك بشرب الماء وتغيير حفاضات الأطفال",
-  "start_url": "/",
+  "start_url": "https://imadtbn.github.io/9atrat-hayat/",
   "display": "standalone",
   "background_color": "#e0f7fa",
   "theme_color": "#0288d1",
