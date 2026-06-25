@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,7 +11,7 @@
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
 
     <style>
-        :root {
+         :root {
             --primary: #0288d1;
             --primary-dark: #01579b;
             --primary-light: #e0f7fa;
@@ -29,40 +30,89 @@
             --radius: 20px;
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
+        
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(2, 136, 209, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(2, 136, 209, 0.6); }
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(2, 136, 209, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(2, 136, 209, 0.6);
+            }
         }
+        
         @keyframes wave {
-            0% { transform: translateX(0) translateZ(0) scaleY(1); }
-            50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
-            100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+            0% {
+                transform: translateX(0) translateZ(0) scaleY(1);
+            }
+            50% {
+                transform: translateX(-25%) translateZ(0) scaleY(0.8);
+            }
+            100% {
+                transform: translateX(-50%) translateZ(0) scaleY(1);
+            }
         }
+        
         @keyframes drop {
-            0% { transform: translateY(-100px) scale(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(300px) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(300px) scale(1);
+                opacity: 0;
+            }
         }
+        
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+        
         @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
         }
+        
         @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg);
@@ -71,30 +121,66 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-
         /* Background Animation */
+        
         .bg-animation {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             overflow: hidden;
             background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
         }
+        
         .bg-animation .drop {
             position: absolute;
-            width: 20px; height: 20px;
+            width: 20px;
+            height: 20px;
             background: rgba(2, 136, 209, 0.1);
             border-radius: 50% 50% 50% 0;
             transform: rotate(-45deg);
             animation: drop 8s infinite linear;
         }
-        .bg-animation .drop:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
-        .bg-animation .drop:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 9s; width: 15px; height: 15px; }
-        .bg-animation .drop:nth-child(3) { left: 50%; animation-delay: 4s; animation-duration: 6s; width: 25px; height: 25px; }
-        .bg-animation .drop:nth-child(4) { left: 70%; animation-delay: 1s; animation-duration: 8s; }
-        .bg-animation .drop:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 7s; width: 18px; height: 18px; }
-
+        
+        .bg-animation .drop:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 7s;
+        }
+        
+        .bg-animation .drop:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+            animation-duration: 9s;
+            width: 15px;
+            height: 15px;
+        }
+        
+        .bg-animation .drop:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+            animation-duration: 6s;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .bg-animation .drop:nth-child(4) {
+            left: 70%;
+            animation-delay: 1s;
+            animation-duration: 8s;
+        }
+        
+        .bg-animation .drop:nth-child(5) {
+            left: 90%;
+            animation-delay: 3s;
+            animation-duration: 7s;
+            width: 18px;
+            height: 18px;
+        }
         /* Header */
+        
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -104,6 +190,7 @@
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(2, 136, 209, 0.3);
         }
+        
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -112,6 +199,7 @@
             justify-content: space-between;
             align-items: center;
         }
+        
         .logo {
             display: flex;
             align-items: center;
@@ -121,18 +209,21 @@
             text-decoration: none;
             color: white;
         }
+        
         .logo-icon {
             font-size: 2rem;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
+        
         .nav-menu {
             display: flex;
             gap: 0.5rem;
             list-style: none;
         }
+        
         .nav-menu a {
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 12px;
@@ -140,11 +231,14 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
-        .nav-menu a:hover, .nav-menu a.active {
-            background: rgba(255,255,255,0.2);
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             transform: translateY(-2px);
         }
+        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -153,33 +247,36 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-
         /* Main Container */
+        
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
             min-height: calc(100vh - 300px);
         }
-
         /* Hero Section */
+        
         .hero {
             text-align: center;
             padding: 3rem 1rem;
             animation: fadeInUp 0.8s ease-out;
         }
+        
         .hero h1 {
             font-size: 2.5rem;
             color: var(--primary-dark);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
         }
+        
         .hero p {
             font-size: 1.1rem;
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto 2rem;
         }
+        
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -187,6 +284,7 @@
             margin-top: 2rem;
             flex-wrap: wrap;
         }
+        
         .stat-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -198,22 +296,25 @@
             transition: var(--transition);
             min-width: 150px;
         }
+        
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
+        
         .stat-card .number {
             font-size: 2rem;
             font-weight: 800;
             color: var(--primary);
         }
+        
         .stat-card .label {
             font-size: 0.85rem;
             color: var(--text-light);
             margin-top: 0.25rem;
         }
-
         /* Cards */
+        
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -225,10 +326,12 @@
             transition: var(--transition);
             animation: fadeInUp 0.6s ease-out;
         }
+        
         .card:hover {
             box-shadow: var(--shadow-hover);
             transform: translateY(-3px);
         }
+        
         .card-title {
             font-size: 1.3rem;
             color: var(--primary-dark);
@@ -237,29 +340,34 @@
             align-items: center;
             gap: 0.75rem;
         }
+        
         .card-title .icon {
             font-size: 1.5rem;
         }
-
         /* Form Elements */
+        
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
+        
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
+        
         .form-group label {
             font-weight: 700;
             color: var(--text);
             font-size: 0.95rem;
         }
+        
         .form-group label .required {
             color: var(--danger);
         }
+        
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -268,10 +376,11 @@
             border-radius: 14px;
             font-size: 1rem;
             font-family: inherit;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255, 255, 255, 0.7);
             transition: var(--transition);
             color: var(--text);
         }
+        
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
@@ -280,12 +389,13 @@
             box-shadow: 0 0 0 4px rgba(2, 136, 209, 0.1);
             background: white;
         }
+        
         .form-group .hint {
             font-size: 0.8rem;
             color: var(--text-light);
         }
-
         /* Buttons */
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -301,58 +411,76 @@
             transition: var(--transition);
             text-decoration: none;
         }
+        
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3);
         }
+        
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(2, 136, 209, 0.4);
         }
+        
         .btn-accent {
             background: linear-gradient(135deg, var(--accent) 0%, #ff8a65 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
         }
+        
         .btn-success {
             background: linear-gradient(135deg, var(--success) 0%, #81c784 100%);
             color: white;
         }
+        
         .btn-outline {
             background: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
         }
+        
         .btn-outline:hover {
             background: var(--primary);
             color: white;
         }
-        .btn-lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
-        .btn-block { width: 100%; }
-
+        
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-block {
+            width: 100%;
+        }
         /* Dashboard */
+        
         .dashboard {
             display: none;
         }
+        
         .dashboard.active {
             display: block;
             animation: fadeInUp 0.5s ease-out;
         }
+        
         .water-progress {
             position: relative;
             width: 200px;
             height: 200px;
             margin: 2rem auto;
         }
+        
         .water-progress svg {
             transform: rotate(-90deg);
         }
+        
         .water-progress .progress-bg {
             fill: none;
             stroke: rgba(2, 136, 209, 0.1);
             stroke-width: 12;
         }
+        
         .water-progress .progress-bar {
             fill: none;
             stroke: url(#waterGradient);
@@ -362,21 +490,26 @@
             stroke-dashoffset: 565;
             transition: stroke-dashoffset 1s ease-out;
         }
+        
         .water-progress .progress-text {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
         }
+        
         .water-progress .progress-text .percent {
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--primary);
         }
+        
         .water-progress .progress-text .label {
             font-size: 0.85rem;
             color: var(--text-light);
         }
+        
         .water-bottle {
             width: 120px;
             height: 200px;
@@ -385,41 +518,50 @@
             border: 4px solid var(--primary);
             border-radius: 20px 20px 40px 40px;
             overflow: hidden;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
         }
+        
         .water-bottle .water-fill {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: linear-gradient(to top, var(--primary), var(--secondary));
             transition: height 0.8s ease-out;
             border-radius: 0 0 36px 36px;
         }
+        
         .water-bottle .water-fill::before {
             content: '';
             position: absolute;
-            top: -10px; left: -50%; right: -50%;
+            top: -10px;
+            left: -50%;
+            right: -50%;
             height: 20px;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             animation: wave 3s infinite linear;
         }
+        
         .water-bottle .bottle-label {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             font-weight: 800;
             color: var(--primary-dark);
             font-size: 1.2rem;
             z-index: 2;
         }
-
         /* Quick Actions */
+        
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1rem;
             margin: 2rem 0;
         }
+        
         .action-btn {
             background: white;
             border: 2px solid var(--border);
@@ -433,25 +575,29 @@
             align-items: center;
             gap: 0.5rem;
         }
+        
         .action-btn:hover {
             border-color: var(--primary);
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
+        
         .action-btn .icon {
             font-size: 2rem;
         }
+        
         .action-btn .text {
             font-weight: 700;
             font-size: 0.9rem;
             color: var(--text);
         }
+        
         .action-btn .sub {
             font-size: 0.75rem;
             color: var(--text-light);
         }
-
         /* Timer Display */
+        
         .timer-display {
             background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
             border-radius: var(--radius);
@@ -460,11 +606,13 @@
             margin: 1.5rem 0;
             border: 2px solid var(--border);
         }
+        
         .timer-display .next-drink {
             font-size: 1.1rem;
             color: var(--text-light);
             margin-bottom: 0.5rem;
         }
+        
         .timer-display .countdown {
             font-size: 3rem;
             font-weight: 800;
@@ -472,6 +620,7 @@
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
         }
+        
         .timer-display .status {
             margin-top: 1rem;
             padding: 0.5rem 1rem;
@@ -480,17 +629,30 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
-        .status.normal { background: #e8f5e9; color: #2e7d32; }
-        .status.warning { background: #fff3e0; color: #ef6c00; }
-        .status.danger { background: #ffebee; color: #c62828; }
-
+        
+        .status.normal {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status.warning {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        .status.danger {
+            background: #ffebee;
+            color: #c62828;
+        }
         /* Info Grid */
+        
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
+        
         .info-card {
             background: white;
             border-radius: var(--radius);
@@ -500,69 +662,84 @@
             position: relative;
             overflow: hidden;
         }
+        
         .info-card::before {
             content: '';
             position: absolute;
-            top: 0; right: 0;
-            width: 4px; height: 100%;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
+        
         .info-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
+        
         .info-card h3 {
             color: var(--primary-dark);
             margin-bottom: 0.75rem;
             font-size: 1.1rem;
         }
-        .info-card p, .info-card li {
+        
+        .info-card p,
+        .info-card li {
             color: var(--text-light);
             font-size: 0.9rem;
             line-height: 1.8;
         }
+        
         .info-card ul {
             padding-right: 1.2rem;
         }
+        
         .info-card li {
             margin-bottom: 0.5rem;
         }
-
         /* References Section */
+        
         .references {
             background: #f5f5f5;
             border-radius: var(--radius);
             padding: 1.5rem;
             margin-top: 1.5rem;
         }
+        
         .references h4 {
             color: var(--primary-dark);
             margin-bottom: 1rem;
         }
+        
         .references ol {
             padding-right: 1.2rem;
         }
+        
         .references li {
             margin-bottom: 0.5rem;
             font-size: 0.85rem;
             color: var(--text-light);
             line-height: 1.7;
         }
+        
         .references a {
             color: var(--primary);
             text-decoration: none;
         }
+        
         .references a:hover {
             text-decoration: underline;
         }
-
         /* Footer */
+        
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: white;
             padding: 3rem 0 1.5rem;
             margin-top: 4rem;
         }
+        
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -571,41 +748,50 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
+        
         .footer-section h4 {
             font-size: 1.1rem;
             margin-bottom: 1rem;
             color: #b3e5fc;
         }
+        
         .footer-section ul {
             list-style: none;
         }
+        
         .footer-section li {
             margin-bottom: 0.5rem;
         }
+        
         .footer-section a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             font-size: 0.9rem;
         }
+        
         .footer-section a:hover {
             color: white;
             padding-right: 5px;
         }
+        
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.85rem;
         }
-
         /* Modal */
+        
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
             z-index: 2000;
             display: none;
@@ -613,44 +799,51 @@
             justify-content: center;
             padding: 1rem;
         }
+        
         .modal-overlay.active {
             display: flex;
             animation: fadeInUp 0.3s ease-out;
         }
+        
         .modal {
             background: white;
             border-radius: var(--radius);
             padding: 2rem;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
             position: relative;
         }
+        
         .modal .modal-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
             animation: breathe 2s ease-in-out infinite;
         }
+        
         .modal h2 {
             color: var(--primary-dark);
             margin-bottom: 1rem;
         }
+        
         .modal p {
             color: var(--text-light);
             margin-bottom: 1.5rem;
         }
+        
         .modal-close {
             position: absolute;
-            top: 1rem; left: 1rem;
+            top: 1rem;
+            left: 1rem;
             background: none;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-light);
         }
-
         /* Notification Toast */
+        
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -660,7 +853,7 @@
             color: white;
             padding: 1rem 2rem;
             border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             z-index: 3000;
             opacity: 0;
             transition: all 0.4s ease;
@@ -669,32 +862,49 @@
             align-items: center;
             gap: 0.5rem;
         }
+        
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
         /* Responsive */
+        
         @media (max-width: 768px) {
-            .header-content { flex-wrap: wrap; }
+            .header-content {
+                flex-wrap: wrap;
+            }
             .nav-menu {
                 display: none;
                 width: 100%;
                 flex-direction: column;
                 margin-top: 1rem;
-                background: rgba(0,0,0,0.1);
+                background: rgba(0, 0, 0, 0.1);
                 border-radius: 12px;
                 padding: 0.5rem;
             }
-            .nav-menu.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .hero h1 { font-size: 1.8rem; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .water-progress { width: 160px; height: 160px; }
-            .timer-display .countdown { font-size: 2rem; }
+            .nav-menu.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .water-progress {
+                width: 160px;
+                height: 160px;
+            }
+            .timer-display .countdown {
+                font-size: 2rem;
+            }
         }
-
         /* Tips Page */
+        
         .tip-card {
             background: white;
             border-radius: var(--radius);
@@ -704,9 +914,11 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
+        
         .tip-card:hover {
             transform: translateX(-5px);
         }
+        
         .tip-card .category {
             display: inline-block;
             background: var(--primary-light);
@@ -717,34 +929,41 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
+        
         .tip-card h4 {
             color: var(--text);
             margin-bottom: 0.5rem;
         }
+        
         .tip-card p {
             color: var(--text-light);
             font-size: 0.9rem;
         }
-
         /* Hidden */
-        .hidden { display: none !important; }
-
+        
+        .hidden {
+            display: none !important;
+        }
         /* Section Title */
+        
         .section-title {
             text-align: center;
             margin: 3rem 0 2rem;
         }
+        
         .section-title h2 {
             color: var(--primary-dark);
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
+        
         .section-title p {
             color: var(--text-light);
         }
     </style>
-<base target="_blank">
+    <base target="_blank">
 </head>
+
 <body>
     <!-- Background Animation -->
     <div class="bg-animation">
@@ -1066,19 +1285,84 @@
     <script>
         // ===================== DATA & CONFIG =====================
         const SEASON_DATA = {
-            'riyadh': { temp: 35, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة، تحتاج لزيادة الماء' },
-            'jeddah': { temp: 33, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة عالية مع حرارة' },
-            'cairo': { temp: 32, season: 'صيف', humidity: 'متوسطة', note: 'جو حار جاف' },
-            'alexandria': { temp: 29, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة بحرية' },
-            'dubai': { temp: 38, season: 'صيف', humidity: 'مرتفعة', note: 'حرارة مرتفعة جداً' },
-            'kuwait': { temp: 36, season: 'صيف', humidity: 'منخفضة', note: 'حرارة جافة شديدة' },
-            'amman': { temp: 28, season: 'صيف', humidity: 'منخفضة', note: 'جو معتدل نسبياً' },
-            'baghdad': { temp: 40, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة جداً' },
-            'tunis': { temp: 30, season: 'صيف', humidity: 'متوسطة', note: 'جو حار معتدل' },
-            'algiers': { temp: 28, season: 'صيف', humidity: 'مرتفعة', note: 'رطوبة معتدلة' },
-            'casablanca': { temp: 25, season: 'صيف', humidity: 'مرتفعة', note: 'جو معتدل رطب' },
-            'khartoum': { temp: 38, season: 'صيف', humidity: 'منخفضة', note: 'حرارة شديدة جداً' },
-            'other': { temp: 30, season: 'غير محدد', humidity: 'متوسطة', note: 'يرجى شرب الماء بانتظام' }
+            'riyadh': {
+                temp: 35,
+                season: 'صيف',
+                humidity: 'منخفضة',
+                note: 'حرارة شديدة، تحتاج لزيادة الماء'
+            },
+            'jeddah': {
+                temp: 33,
+                season: 'صيف',
+                humidity: 'مرتفعة',
+                note: 'رطوبة عالية مع حرارة'
+            },
+            'cairo': {
+                temp: 32,
+                season: 'صيف',
+                humidity: 'متوسطة',
+                note: 'جو حار جاف'
+            },
+            'alexandria': {
+                temp: 29,
+                season: 'صيف',
+                humidity: 'مرتفعة',
+                note: 'رطوبة بحرية'
+            },
+            'dubai': {
+                temp: 38,
+                season: 'صيف',
+                humidity: 'مرتفعة',
+                note: 'حرارة مرتفعة جداً'
+            },
+            'kuwait': {
+                temp: 36,
+                season: 'صيف',
+                humidity: 'منخفضة',
+                note: 'حرارة جافة شديدة'
+            },
+            'amman': {
+                temp: 28,
+                season: 'صيف',
+                humidity: 'منخفضة',
+                note: 'جو معتدل نسبياً'
+            },
+            'baghdad': {
+                temp: 40,
+                season: 'صيف',
+                humidity: 'منخفضة',
+                note: 'حرارة شديدة جداً'
+            },
+            'tunis': {
+                temp: 30,
+                season: 'صيف',
+                humidity: 'متوسطة',
+                note: 'جو حار معتدل'
+            },
+            'algiers': {
+                temp: 28,
+                season: 'صيف',
+                humidity: 'مرتفعة',
+                note: 'رطوبة معتدلة'
+            },
+            'casablanca': {
+                temp: 25,
+                season: 'صيف',
+                humidity: 'مرتفعة',
+                note: 'جو معتدل رطب'
+            },
+            'khartoum': {
+                temp: 38,
+                season: 'صيف',
+                humidity: 'منخفضة',
+                note: 'حرارة شديدة جداً'
+            },
+            'other': {
+                temp: 30,
+                season: 'غير محدد',
+                humidity: 'متوسطة',
+                note: 'يرجى شرب الماء بانتظام'
+            }
         };
 
         const TIPS = [
@@ -1194,13 +1478,25 @@
             }
 
             // Health conditions
-            switch(data.health) {
-                case 'pregnancy': base += 300; break;
-                case 'breastfeeding': base += 700; break;
-                case 'athlete': base += 500; break;
-                case 'kidney': base = Math.min(base, 1500); break; // Kidney patients need less
-                case 'heart': base = Math.min(base, 1500); break;
-                case 'diabetes': base += 200; break;
+            switch (data.health) {
+                case 'pregnancy':
+                    base += 300;
+                    break;
+                case 'breastfeeding':
+                    base += 700;
+                    break;
+                case 'athlete':
+                    base += 500;
+                    break;
+                case 'kidney':
+                    base = Math.min(base, 1500);
+                    break; // Kidney patients need less
+                case 'heart':
+                    base = Math.min(base, 1500);
+                    break;
+                case 'diabetes':
+                    base += 200;
+                    break;
             }
 
             // Climate adjustment
@@ -1258,21 +1554,21 @@
             // Baby section
             if (userData.hasBaby) {
                 document.getElementById('babyDashboard').style.display = 'block';
-                document.getElementById('diaperTypeDisplay').textContent = 
+                document.getElementById('diaperTypeDisplay').textContent =
                     userData.diaperType === 'disposable' ? 'حفاضات ورقية' : 'حفاضات قماشية';
                 startDiaperTimer();
             }
 
             // Update info
-            document.getElementById('goalInfo').textContent = 
+            document.getElementById('goalInfo').textContent =
                 `هدفك: ${dailyGoal} مل يومياً (${Math.round(dailyGoal/250)} أكواب تقريباً)`;
 
             if (userData.climate) {
-                document.getElementById('climateInfo').textContent = 
+                document.getElementById('climateInfo').textContent =
                     `منطقة ${userData.region} - ${userData.climate.season} - ${userData.climate.temp}°C - ${userData.climate.humidity} رطوبة`;
             }
 
-            document.getElementById('dailyTip').textContent = 
+            document.getElementById('dailyTip').textContent =
                 TIPS[Math.floor(Math.random() * TIPS.length)];
 
             // Schedule notifications
@@ -1364,7 +1660,7 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('countdownTimer').textContent = 
+            document.getElementById('countdownTimer').textContent =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
             // Update status color
@@ -1409,7 +1705,7 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('diaperCountdown').textContent = 
+            document.getElementById('diaperCountdown').textContent =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
 
@@ -1480,7 +1776,7 @@
         // ===================== SOUND =====================
         function playSound(type) {
             try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const ctx = new(window.AudioContext || window.webkitAudioContext)();
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
 
@@ -1555,4 +1851,5 @@
         });
     </script>
 </body>
+
 </html>

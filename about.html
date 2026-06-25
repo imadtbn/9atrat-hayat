@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,47 +9,318 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
     <style>
-        :root { --primary: #0288d1; --primary-dark: #01579b; --primary-light: #e0f7fa; --secondary: #00bcd4; --accent: #ff7043; --bg: #f0f9ff; --card-bg: rgba(255,255,255,0.85); --text: #263238; --text-light: #546e7a; --border: rgba(2,136,209,0.15); --shadow: 0 8px 32px rgba(2,136,209,0.12); --radius: 20px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(2,136,209,0.3); }
-        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
-        .logo-icon { font-size: 2rem; animation: float 3s ease-in-out infinite; }
-        .nav-menu { display: flex; gap: 0.5rem; list-style: none; }
-        .nav-menu a { color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s; font-weight: 600; font-size: 0.9rem; }
-        .nav-menu a:hover, .nav-menu a.active { background: rgba(255,255,255,0.2); color: white; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 300px); }
-        .hero { text-align: center; padding: 3rem 1rem; animation: fadeInUp 0.8s ease-out; }
-        .hero h1 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
-        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow); animation: fadeInUp 0.6s ease-out; }
-        .card-title { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-        .card-title .icon { font-size: 1.5rem; }
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .team-card { background: white; border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow); transition: all 0.3s; border: 1px solid var(--border); }
-        .team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(2,136,209,0.2); }
-        .team-card .avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white; }
-        .team-card h3 { color: var(--primary-dark); margin-bottom: 0.5rem; }
-        .team-card p { color: var(--text-light); font-size: 0.9rem; }
-        .feature-list { list-style: none; }
-        .feature-list li { padding: 1rem; background: white; border-radius: 12px; margin-bottom: 0.75rem; border-right: 3px solid var(--primary); display: flex; align-items: center; gap: 1rem; }
-        .feature-list li .icon { font-size: 1.5rem; }
-        .feature-list li span { color: var(--text); font-weight: 600; }
-        footer { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 3rem 0 1.5rem; margin-top: 4rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .footer-section h4 { font-size: 1.1rem; margin-bottom: 1rem; color: #b3e5fc; }
-        .footer-section ul { list-style: none; }
-        .footer-section li { margin-bottom: 0.5rem; }
-        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
-        .footer-section a:hover { color: white; padding-right: 5px; }
-        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.85rem; }
-        @media (max-width: 768px) { .nav-menu { display: none; width: 100%; flex-direction: column; margin-top: 1rem; background: rgba(0,0,0,0.1); border-radius: 12px; padding: 0.5rem; } .nav-menu.active { display: flex; } .mobile-menu-btn { display: block; } .hero h1 { font-size: 1.8rem; } .footer-content { grid-template-columns: 1fr; text-align: center; } }
+         :root {
+            --primary: #0288d1;
+            --primary-dark: #01579b;
+            --primary-light: #e0f7fa;
+            --secondary: #00bcd4;
+            --accent: #ff7043;
+            --bg: #f0f9ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text: #263238;
+            --text-light: #546e7a;
+            --border: rgba(2, 136, 209, 0.15);
+            --shadow: 0 8px 32px rgba(2, 136, 209, 0.12);
+            --radius: 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(2, 136, 209, 0.3);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: calc(100vh - 300px);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .card-title .icon {
+            font-size: 1.5rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(2, 136, 209, 0.2);
+        }
+        
+        .team-card .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .team-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            border-right: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .feature-list li .icon {
+            font-size: 1.5rem;
+        }
+        
+        .feature-list li span {
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #b3e5fc;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 1rem;
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                padding: 0.5rem;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
     </style>
+    <base target="_blank">
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -76,9 +348,7 @@
         <div class="card">
             <h2 class="card-title"><span class="icon">🎯</span> رسالتنا</h2>
             <p style="color: var(--text-light); line-height: 2; font-size: 1.05rem;">
-                نؤمن بأن الصحة تبدأ بخطوات بسيطة، وأن شرب الماء بانتظام هو أحد أهم هذه الخطوات. 
-                هدفنا هو مساعدة الأفراد والعائلات على تبني عادات صحية مستدامة من خلال تذكيرات ذكية 
-                ومعلومات علمية موثوقة. نسعى لأن نكون رفيقاً يومياً لكل من يريد الاعتناء بصحته وصحة عائلته.
+                نؤمن بأن الصحة تبدأ بخطوات بسيطة، وأن شرب الماء بانتظام هو أحد أهم هذه الخطوات. هدفنا هو مساعدة الأفراد والعائلات على تبني عادات صحية مستدامة من خلال تذكيرات ذكية ومعلومات علمية موثوقة. نسعى لأن نكون رفيقاً يومياً لكل من يريد الاعتناء بصحته وصحة عائلته.
             </p>
         </div>
 
@@ -118,9 +388,7 @@
         <div class="card">
             <h2 class="card-title"><span class="icon">🌍</span> رؤيتنا</h2>
             <p style="color: var(--text-light); line-height: 2; font-size: 1.05rem;">
-                نطمح لأن نكون المنصة الرائدة في الوطن العربي للتوعية بأهمية الترطيب ورعاية الأطفال. 
-                نسعى للوصول إلى كل بيت وكل أسرة لنُسهم في بناء مجتمع أكثر صحةً ووعياً. 
-                نؤمن بأن "قطرة حياة" واحدة قد تُحدث فرقاً كبيراً في حياة الإنسان.
+                نطمح لأن نكون المنصة الرائدة في الوطن العربي للتوعية بأهمية الترطيب ورعاية الأطفال. نسعى للوصول إلى كل بيت وكل أسرة لنُسهم في بناء مجتمع أكثر صحةً ووعياً. نؤمن بأن "قطرة حياة" واحدة قد تُحدث فرقاً كبيراً في حياة الإنسان.
             </p>
         </div>
     </main>
@@ -157,17 +425,26 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
         function installPWA() {
             if ('beforeinstallprompt' in window) {
                 window.deferredPrompt.prompt();
                 window.deferredPrompt.userChoice.then(choice => {
                     if (choice.outcome === 'accepted') alert('✅ تم تثبيت التطبيق!');
                 });
-            } else { alert('📱 أضف الصفحة إلى الشاشة الرئيسية'); }
+            } else {
+                alert('📱 أضف الصفحة إلى الشاشة الرئيسية');
+            }
         }
         let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); window.deferredPrompt = e; });
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            window.deferredPrompt = e;
+        });
     </script>
 </body>
-  </html>
+
+</html>
