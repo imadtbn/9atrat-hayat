@@ -378,9 +378,4 @@
         window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); window.deferredPrompt = e; });
     </script>
 </body>
-</html>'''
-
-with open(os.path.join(output_dir, "tips.html"), "w", encoding="utf-8") as f:
-    f.write(tips_html)
-
-print("✅ tips.html created")
+</html>
