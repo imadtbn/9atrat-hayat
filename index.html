@@ -6,9 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0288d1">
     <meta name="description" content="تطبيق قطرة حياة - تذكير ذكي بشرب الماء وتغيير حفاضات الأطفال">
-    <title>قطرة حياة 💧</title>
+    <title>قطرة حياة | تذكير ذكي بشرب الماء وحساب الاحتياج اليومي للترطيب</title>
+
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E">
+
+    <meta name="description" content="قطرة حياة هو تطبيق ويب ذكي يساعدك على حساب احتياجك اليومي من الماء، تتبع كمية السوائل التي تشربها، والحصول على تذكيرات مخصصة للترطيب وتغيير حفاضات الأطفال بناءً على العمر والحالة الصحية والظروف المناخية.">
+
+    <meta name="keywords" content="شرب الماء, تذكير شرب الماء, حساب احتياج الماء, الترطيب الصحي, تطبيق شرب الماء, صحة الطفل, تغيير الحفاضات, تذكير الحفاض, تطبيق صحي, PWA, hydration tracker, water reminder, baby diaper reminder">
+
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="قطرة حياة">
+    <meta http-equiv="content-language" content="ar">
+    <link rel="canonical" href="https://example.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:title" content="قطرة حياة | تذكير ذكي بشرب الماء وتغيير الحفاضات">
+    <meta property="og:description" content="احسب احتياجك اليومي من الماء واحصل على تذكيرات ذكية للترطيب والعناية بالأطفال وفق بياناتك الشخصية والظروف المناخية.">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:site_name" content="قطرة حياة">
+    <meta property="og:image" content="https://example.com/images/cover.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="قطرة حياة | مساعدك الذكي للترطيب">
+    <meta name="twitter:description" content="تطبيق ذكي لمتابعة شرب الماء وتذكير تغيير الحفاضات للأطفال.">
+    <meta name="twitter:image" content="https://example.com/images/cover.webp">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "قطرة حياة",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "Web",
+            "description": "تطبيق ويب ذكي يساعد المستخدمين على حساب احتياجهم اليومي من الماء وتلقي تذكيرات مخصصة للترطيب والعناية بالأطفال.",
+            "url": "https://example.com/",
+            "inLanguage": "ar",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "featureList": [
+                "حساب الاحتياج اليومي من الماء",
+                "تذكيرات ذكية للترطيب",
+                "تتبع استهلاك المياه",
+                "تذكير تغيير حفاضات الأطفال",
+                "إشعارات فورية",
+                "تطبيق ويب تقدمي PWA"
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "قطرة حياة",
+            "url": "https://example.com/",
+            "logo": "https://example.com/images/logo.webp"
+        }
+    </script>
+
+
 
     <style>
          :root {
@@ -990,14 +1051,17 @@
                 <li><a href="privacy.html">الخصوصية</a></li>
             </ul>
         </div>
+
     </header>
 
     <!-- Main Content -->
     <main>
+
         <!-- Setup Section (Shown initially) -->
         <section id="setupSection" class="setup-section">
             <div class="hero">
                 <h1>💧 قطرة حياة</h1>
+                <h2>حاسبة احتياج الماء اليومية والتذكير الذكي بالترطيب</h2>
                 <p>مساعدك الذكي لتذكيرك بشرب الماء وتغيير حفاضات طفلك، بناءً على بياناتك الشخصية والبيئية</p>
                 <div class="hero-stats">
                     <div class="stat-card">
@@ -1051,6 +1115,7 @@
                             <label>المنطقة/المدينة <span class="required">*</span></label>
                             <select id="userRegion" required onchange="updateSeasonInfo()">
                                 <option value="">اختر المنطقة</option>
+                                <option value="algiers">الجزائر</option>
                                 <option value="riyadh">الرياض (السعودية)</option>
                                 <option value="jeddah">جدة (السعودية)</option>
                                 <option value="cairo">القاهرة (مصر)</option>
@@ -1060,7 +1125,6 @@
                                 <option value="amman">عمان (الأردن)</option>
                                 <option value="baghdad">بغداد (العراق)</option>
                                 <option value="tunis">تونس</option>
-                                <option value="algiers">الجزائر</option>
                                 <option value="casablanca">الدار البيضاء (المغرب)</option>
                                 <option value="khartoum">الخرطوم (السودان)</option>
                                 <option value="other">منطقة أخرى</option>
@@ -1107,6 +1171,7 @@
                 </form>
             </div>
         </section>
+
 
         <!-- Dashboard Section (Hidden initially) -->
         <section id="dashboardSection" class="dashboard">
@@ -1851,5 +1916,15 @@
         });
     </script>
 </body>
+
+</html>
+
+</html> });
+</script>
+</body>
+
+</html>
+
+</html>
 
 </html>
