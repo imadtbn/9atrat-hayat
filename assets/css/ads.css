@@ -1,0 +1,133 @@
+/*
+ * نظام موحد لوحدات AdSense
+ * يحافظ على مساحة مستقرة، ويمنع تمدد الإعلان خارج المحتوى، ويخفي الوحدات غير المملوءة.
+ */
+.ad-container {
+    --ad-border: rgba(2, 136, 209, 0.14);
+    --ad-surface: rgba(255, 255, 255, 0.74);
+    width: min(100%, 960px);
+    min-height: 106px;
+    margin: clamp(1.5rem, 3vw, 2.75rem) auto;
+    padding: 0.65rem clamp(0.4rem, 1.6vw, 1rem);
+    position: relative;
+    display: block;
+    overflow: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
+    text-align: center;
+    background: var(--ad-surface);
+    border: 1px solid var(--ad-border);
+    border-radius: clamp(12px, 2vw, 18px);
+    box-shadow: 0 8px 24px rgba(2, 136, 209, 0.07);
+    transition: opacity 180ms ease, background-color 180ms ease;
+}
+
+.ad-container::before {
+    content: "إعلان";
+    position: absolute;
+    inset-block-start: 0.35rem;
+    inset-inline-start: 0.55rem;
+    z-index: 1;
+    color: rgba(45, 88, 108, 0.58);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+}
+
+.ad-container ins.adsbygoogle {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100%;
+    min-height: 76px;
+    margin: 0 auto;
+    background: transparent;
+    text-align: center;
+}
+
+.ad-container--display {
+    min-height: 106px;
+}
+
+.ad-container--fluid,
+.ad-container--in-article {
+    min-height: 118px;
+}
+
+.ad-container--in-article {
+    width: min(100%, 760px);
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.ad-container--multiplex {
+    width: min(100%, 1060px);
+    min-height: 166px;
+}
+
+.ad-container[data-ad-state="loading"] {
+    background: rgba(255, 255, 255, 0.62);
+}
+
+.ad-container[data-ad-state="loaded"] {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.ad-container[data-ad-state="empty"],
+.ad-container[data-ad-state="failed"] {
+    display: none !important;
+    min-height: 0;
+    margin-block: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.ad-container[data-ad-state="empty"]::before,
+.ad-container[data-ad-state="failed"]::before {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .ad-container {
+        min-height: 92px;
+        margin-block: 1.25rem;
+        padding: 0.5rem 0.3rem;
+        border-radius: 13px;
+    }
+
+    .ad-container ins.adsbygoogle {
+        min-height: 66px;
+    }
+
+    .ad-container--fluid,
+    .ad-container--in-article {
+        min-height: 102px;
+    }
+
+    .ad-container--multiplex {
+        min-height: 138px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-container {
+        min-height: 82px;
+        margin-block: 1rem;
+        padding-inline: 0.15rem;
+    }
+
+    .ad-container::before {
+        inset-inline-start: 0.35rem;
+        font-size: 0.58rem;
+    }
+
+    .ad-container--multiplex {
+        min-height: 118px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ad-container {
+        transition: none;
+    }
+}
