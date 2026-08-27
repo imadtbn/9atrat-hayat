@@ -27,6 +27,7 @@
 
     var state = {
         gtm: false,
+        ga4: false,
         adsense: false,
         clarity: false
     };
@@ -92,6 +93,25 @@
         } else {
             window.setTimeout(callback, timeout);
         }
+    }
+
+    function loadGa4() {
+        if (!isConfigured(config.ga4MeasurementId) || state.ga4) {
+            return;
+        }
+
+        // Google tag (gtag.js) يُحمّل مركزيًا من هنا بدل تكراره داخل صفحات HTML.
+        // إذا أُضيف نفس معرف GA4 داخل GTM، عطّل أحد المسارين لمنع تكرار page_view.
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () {
+            window.dataLayer.push(arguments);
+        };
+        state.ga4 = true;
+        window.gtag("js", new Date());
+        window.gtag("config", config.ga4MeasurementId);
+        loadScript(
+            "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(config.ga4MeasurementId)
+        );
     }
 
     function loadGtm() {
@@ -228,7 +248,8 @@
         loadScript("https://www.clarity.ms/tag/" + encodeURIComponent(config.clarityId));
     }
 
-    // GTM يُحمّل فقط عند توفير معرف فعلي، ويكون المسار الوحيد لـ GA4 وClarity.
+    // تُحمّل الخدمات المركزية مرة واحدة فقط وبالمعرفات الفعلية.
+    loadGa4();
     loadGtm();
 
     window.addEventListener("load", function () {
