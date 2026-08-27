@@ -14,7 +14,7 @@
     var PLACEHOLDER = "xxxxxxxx";
     var config = Object.freeze({
         // ضع هنا معرف حاوية Google Tag Manager مثل GTM-XXXXXXX
-        gtmId: PLACEHOLDER,
+        gtmId: "GTM-K9579C56",
         // ضع هنا معرف قياس Google Analytics 4 مثل G-XXXXXXXXXX؛ يُدار عبر GTM عند توفره
         ga4MeasurementId: "G-YQFRBCDS5B",
         // معرف AdSense الموجود في الموقع
