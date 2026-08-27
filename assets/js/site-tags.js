@@ -16,7 +16,7 @@
         // ضع هنا معرف حاوية Google Tag Manager مثل GTM-XXXXXXX
         gtmId: PLACEHOLDER,
         // ضع هنا معرف قياس Google Analytics 4 مثل G-XXXXXXXXXX؛ يُدار عبر GTM عند توفره
-        ga4MeasurementId: PLACEHOLDER,
+        ga4MeasurementId: "G-MVGWE2MD8D",
         // معرف AdSense الموجود في الموقع
         adsenseClient: "ca-pub-5656416032906373",
         // ضع هنا معرف مشروع Microsoft Clarity مثل xxxxxxxxxx
