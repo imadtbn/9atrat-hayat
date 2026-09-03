@@ -53,6 +53,8 @@
     <meta name="twitter:image" content="https://imadtbn.github.io/9atrat-hayat/images/cover.webp">
 
     <link rel="stylesheet" href="assets/css/style-main.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/ads.css">
 
     <!-- Google AdSense -->
@@ -280,6 +282,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">الرئيسية</a></li>
                 <li><a href="tips.html">إرشادات طبية</a></li>
+                <li><a href="articles.html">المقالات</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 <li><a href="privacy.html">الخصوصية</a></li>
@@ -312,7 +315,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <h2 class="card-title"><span class="icon">👤</span> إعداداتك الشخصية</h2>
                 <form id="userForm" onsubmit="saveUserData(event)">
                     <div class="form-grid">
@@ -417,7 +420,7 @@
             </div>
 
             <!-- Water Progress -->
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <h2 class="card-title"><span class="icon">💧</span> تقدم شرب الماء</h2>
                 <div class="water-progress">
                     <svg width="200" height="200" viewBox="0 0 200 200">
@@ -472,7 +475,7 @@
             </div>
 
             <!-- Baby Diaper Section -->
-            <div class="card" id="babyDashboard" style="display: none;">
+            <div class="card" data-aos="fade-up" id="babyDashboard" style="display: none;">
                 <h2 class="card-title"><span class="icon">👶</span> تذكير تغيير الحفاض</h2>
                 <div class="timer-display">
                     <div class="next-drink">⏰ الوقت المتبقي لتغيير الحفاض</div>
@@ -504,7 +507,7 @@
             </div>
 
             <!-- Today's Info -->
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <h2 class="card-title"><span class="icon">📋</span> ملخص اليوم</h2>
                 <div class="info-grid">
                     <div class="info-card">
@@ -1158,6 +1161,8 @@
     </script>
 
     <!-- AdSense إعلان  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 
 </html>
