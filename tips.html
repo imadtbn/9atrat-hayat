@@ -210,6 +210,7 @@
 </script>
     <script src="assets/js/site-tags.js" defer></script>
     <meta name="google-site-verification" content="f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -227,6 +228,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="tips.html" class="active">إرشادات طبية</a></li>
+                <li><a href="articles.html">المقالات</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 <li><a href="privacy.html">الخصوصية</a></li>
@@ -235,12 +237,13 @@
     </header>
 
     <main>
+        <div class="image-wrapper" data-aos="fade-up" style="text-align: center; margin-bottom: 30px;"><img src="https://images.unsplash.com/photo-1523362628745-0c13750d176c?auto=format&fit=crop&q=80&w=1200" alt="نصائح صحية" style="width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
         <div class="hero">
             <h1>📚 الإرشادات الطبية والنصائح العلمية</h1>
             <p>معلومات موثقة من مصادر علمية موثوقة حول أهمية الماء والترطيب</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">📊</span> الاحتياجات اليومية الموصى بها (Adequate Intake)</h2>
             <p style="color: var(--text-light); margin-bottom: 1rem;">بناءً على المعهد الوطني الأمريكي للطب (National
                 Academy of Medicine) ومنظمة الصحة العالمية:</p>
@@ -322,7 +325,7 @@
         <div class="ad-container ad-container--fluid" data-ad-type="fluid" data-ad-slot="7867079394" data-ad-lazy="true" role="complementary" aria-label="إعلان"><ins class="adsbygoogle" data-ad-format="fluid" data-ad-layout-key="-fr+56+4k-d4+74"
                 data-ad-client="ca-pub-5656416032906373" data-ad-slot="7867079394" data-ad-type="fluid"></ins></div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">🌡️</span> تأثير المناخ والبيئة</h2>
             <div class="tip-card">
                 <span class="category">مناخ حار</span>
@@ -344,7 +347,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">🩺</span> الحالات الصحية الخاصة</h2>
             <div class="tip-card">
                 <span class="category">أمراض الكلى</span>
@@ -388,7 +391,7 @@
         <div class="ad-container ad-container--in-article" data-ad-type="in-article" data-ad-slot="6118497380" data-ad-lazy="true" role="complementary" aria-label="إعلان"><ins class="adsbygoogle" data-ad-client="ca-pub-5656416032906373"
                 data-ad-slot="6118497380" data-ad-format="fluid" data-ad-type="in-article" data-ad-layout="in-article"></ins></div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">👶</span> رعاية الرضع والأطفال</h2>
             <div class="tip-card">
                 <span class="category">حفاضات الأطفال</span>
@@ -413,7 +416,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">💡</span> نصائح علمية للترطيب الأمثل</h2>
             <div class="tip-card">
                 <span class="category">توقيت الشرب</span>
@@ -452,7 +455,7 @@
             </div>
         </div>
 
-        <div class="card" id="references">
+        <div class="card" data-aos="fade-up" id="references">
             <h2 class="card-title"><span class="icon">📖</span> المراجع العلمية والمصادر</h2>
             <div class="references">
                 <h4>المراجع العلمية الموثقة:</h4>
@@ -578,6 +581,8 @@
     </script>
 
     <!-- AdSense إعلان  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 
 </html>

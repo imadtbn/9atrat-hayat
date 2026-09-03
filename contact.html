@@ -210,6 +210,7 @@
 
     <script src="assets/js/site-tags.js" defer></script>
     <meta name="google-site-verification" content="f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -227,6 +228,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="tips.html">إرشادات طبية</a></li>
+                <li><a href="articles.html">المقالات</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html" class="active">اتصل بنا</a></li>
                 <li><a href="privacy.html">الخصوصية</a></li>
@@ -235,6 +237,7 @@
     </header>
 
     <main>
+        <div class="image-wrapper" data-aos="fade-up" style="text-align: center; margin-bottom: 30px;"><img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&q=80&w=1200" alt="اتصل بنا" style="width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
         <div class="hero">
             <h1>📧 اتصل بنا</h1>
             <p>نحن هنا لمساعدتك! أرسل لنا استفسارك أو اقتراحك وسنرد عليك في أقرب وقت</p>
@@ -245,7 +248,7 @@
                 data-ad-slot="3143411927" data-ad-format="auto" data-full-width-responsive="true" data-ad-type="display"></ins></div>
 
         <div class="contact-grid">
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <h2 class="card-title"><span class="icon">✉️</span> أرسل رسالة</h2>
                 <form onsubmit="sendMessage(event)">
                     <div class="form-group">
@@ -281,7 +284,7 @@
                     data-ad-layout-key="-fr+56+4k-d4+74" data-ad-client="ca-pub-5656416032906373"
                     data-ad-slot="8546947691" data-ad-type="fluid"></ins></div>
 
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <h2 class="card-title"><span class="icon">📞</span> معلومات التواصل</h2>
                 <div class="contact-info">
                     <div class="info-item">
@@ -409,6 +412,8 @@
     </script>
 
     <!-- AdSense إعلان  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 
 </html>

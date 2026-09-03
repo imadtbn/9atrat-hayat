@@ -34,6 +34,7 @@
 
     <script src="assets/js/site-tags.js" defer></script>
     <meta name="google-site-verification" content="f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,6 +52,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="tips.html">إرشادات طبية</a></li>
+                <li><a href="articles.html">المقالات</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 <li><a href="privacy.html" class="active">الخصوصية</a></li>
@@ -59,6 +61,7 @@
     </header>
 
     <main>
+        <div class="image-wrapper" data-aos="fade-up" style="text-align: center; margin-bottom: 30px;"><img src="https://images.unsplash.com/photo-1507925922893-ec9f1cb260f9?auto=format&fit=crop&q=80&w=1200" alt="الخصوصية والأمان" style="width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
         <div class="hero">
             <h1>🔒 سياسة الخصوصية</h1>
             <p>نحن نحترم خصوصيتك تماماً. تعرف على كيفية تعاملنا مع بياناتك</p>
@@ -69,7 +72,7 @@
                 معلوماتك.</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">📦</span> البيانات التي نجمعها</h2>
             <div class="policy-item">
                 <h3>📝 البيانات الشخصية</h3>
@@ -96,7 +99,7 @@
         <div class="ad-container ad-container--fluid" data-ad-type="fluid" data-ad-slot="7867079394" data-ad-lazy="true" role="complementary" aria-label="إعلان"><ins class="adsbygoogle" data-ad-format="fluid" data-ad-layout-key="-fr+56+4k-d4+74"
                 data-ad-client="ca-pub-5656416032906373" data-ad-slot="7867079394" data-ad-type="fluid"></ins></div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">💾</span> كيفية حفظ البيانات</h2>
             <div class="policy-item">
                 <h3>🖥️ التخزين المحلي فقط</h3>
@@ -119,7 +122,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">🔔</span> الإشعارات والتذكيرات</h2>
             <div class="policy-item">
                 <h3>📱 إشعارات الجهاز</h3>
@@ -137,7 +140,7 @@
         <div class="ad-container ad-container--display" data-ad-type="display" data-ad-slot="1760836049" data-ad-lazy="true" role="complementary" aria-label="إعلان"><ins class="adsbygoogle" data-ad-client="ca-pub-5656416032906373"
                 data-ad-slot="1760836049" data-ad-format="auto" data-full-width-responsive="true" data-ad-type="display"></ins></div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">🍪</span> ملفات تعريف الارتباط (Cookies)</h2>
             <div class="policy-item">
                 <h3>لا نستخدم ملفات تعريف الارتباط التقليدية</h3>
@@ -151,7 +154,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">⚠️</span> إخلاء المسؤولية</h2>
             <div class="policy-item">
                 <h3>الاستخدام الطبي</h3>
@@ -164,7 +167,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-up">
             <h2 class="card-title"><span class="icon">📅</span> تحديثات السياسة</h2>
             <p style="color: var(--text-light); line-height: 1.9;">
                 آخر تحديث: 25 يونيو 2024. نحتفظ بالحق في تحديث هذه السياسة. أي تغييرات جوهرية سيتم الإعلان عنها في
@@ -231,6 +234,8 @@
     </script>
 
     <!-- AdSense إعلان  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 
 </html>
