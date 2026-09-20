@@ -35,7 +35,7 @@ self.addEventListener('sync', event => {
   if (event.tag === 'water-reminder') {
     self.registration.showNotification('💧 قطرة حياة', {
       body: 'حان وقت شرب الماء!',
-      icon: 'data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E',
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%230288d1'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E💧%3C/text%3E%3C/svg%3E",
       badge: '💧',
       vibrate: [200, 100, 200],
       requireInteraction: true,
@@ -48,7 +48,7 @@ self.addEventListener('sync', event => {
   if (event.tag === 'diaper-reminder') {
     self.registration.showNotification('👶 قطرة حياة', {
       body: 'حان وقت تغيير الحفاض!',
-      icon: 'data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%23ff7043'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E👶%3C/text%3E%3C/svg%3E',
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='88' fill='%23ff7043'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E👶%3C/text%3E%3C/svg%3E",
       badge: '👶',
       vibrate: [300, 100, 300],
       requireInteraction: true
