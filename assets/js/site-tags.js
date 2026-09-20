@@ -256,4 +256,9 @@
         runWhenIdle(loadAdsense, 2500);
         runWhenIdle(loadClarity, 5000);
     }, { once: true });
+
+    // Conditional export for testing purposes
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = { isConfigured, PLACEHOLDER };
+    }
 })();
