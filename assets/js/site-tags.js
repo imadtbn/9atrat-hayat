@@ -56,7 +56,7 @@
     function loadScript(src, onload) {
         var scripts = Array.prototype.slice.call(document.scripts);
         var existing = scripts.find(function (script) {
-            return script.dataset.siteTagSrc === src || script.src === src;
+            return script.src === src || script.getAttribute('src') === src;
         });
 
         if (existing) {
@@ -73,7 +73,6 @@
         var script = document.createElement("script");
         script.src = src;
         script.async = true;
-        script.dataset.siteTagSrc = src;
         script.addEventListener("load", function () {
             script.dataset.siteTagLoaded = "true";
             if (onload) {
