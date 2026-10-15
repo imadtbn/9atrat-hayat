@@ -1,33 +1,54 @@
-const CACHE_NAME = 'qatra-hayat-v1';
+// Versioned, scope-relative app shell. Navigation uses network first to avoid stale pages.
+const CACHE_NAME = 'qatra-hayat-v2-navigation';
 const urlsToCache = [
-  '/https://imadtbn.github.io/9atrat-hayat/',
-  '/index.html',
-  '/about.html',
-  '/privacy.html',
-  '/contact.html',
-  '/tips.html'
+  './',
+  './index.html',
+  './about.html',
+  './articles.html',
+  './privacy.html',
+  './contact.html',
+  './tips.html',
+  './assets/css/site-navigation.css',
+  './assets/js/site-navigation.js'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) return response;
-        return fetch(event.request);
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key.startsWith('qatra-hayat-') && key !== CACHE_NAME)
+        .map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  const url = new URL(request.url);
+  if (request.method !== 'GET' || url.origin !== self.location.origin ||
+      !url.pathname.startsWith(new URL(self.registration.scope).pathname)) return;
+
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request).then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(request, copy)));
+        }
+        return response;
+      }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html')))
+    );
+    return;
+  }
+  event.respondWith(
+    caches.match(request).then(cached => cached || fetch(request))
+  );
 });
 
 // Background sync for reminders
